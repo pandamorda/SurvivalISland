@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/_Project/UI/USS/SurvivalUI.uss?fileID=7433441132597879392&amp;guid=def793937eac8fd44b557c130ecb247f&amp;type=3#SurvivalUI"/>
+    <ui:VisualElement name="root">
+        <ui:VisualElement name="bars-container">
+            <ui:VisualElement name="stamina-wrapper" class="bar-wrapper">
+                <ui:Label text="Stamina" class="bar-label"/>
+                <ui:VisualElement name="stamina-background" class="bar-background">
+                    <ui:VisualElement name="stamina-fill" class="bar-fill stamina-fill"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="hunger-wrapper" class="bar-wrapper">
+                <ui:Label text="Hunger" class="bar-label"/>
+                <ui:VisualElement name="hunger-background" class="bar-background">
+                    <ui:VisualElement name="hunger-fill" class="bar-fill hunger-fill"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

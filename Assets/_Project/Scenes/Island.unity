@@ -1041,6 +1041,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1122528407}
   - component: {fileID: 1122528406}
+  - component: {fileID: 1122528408}
   m_Layer: 5
   m_Name: UIDocument
   m_TagString: Untagged
@@ -1062,7 +1063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.UIElements.UIDocument
   m_PanelSettings: {fileID: 11400000, guid: de53f7056cf4a8c4891adfa3bd9366be, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: 2dd3251f6703183478dec38392f77442, type: 3}
+  sourceAsset: {fileID: 9197481963319205126, guid: 03225d7da0e3b304f8538b95cd1df49a, type: 3}
   m_SortingOrder: 0
   m_Position: 0
   m_WorldSpaceSizeMode: 1
@@ -1086,6 +1087,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1122528408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122528405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb7dede1068dff448f7ab65768c0b25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SurvivalUI
+  survival: {fileID: 0}
+  staminaFill: {fileID: 0}
+  hungerFill: {fileID: 0}
 --- !u!1 &1154160804
 GameObject:
   m_ObjectHideFlags: 0
@@ -1357,6 +1373,7 @@ GameObject:
   - component: {fileID: 1538365602}
   - component: {fileID: 1538365601}
   - component: {fileID: 1538365600}
+  - component: {fileID: 1538365605}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1395,7 +1412,7 @@ MonoBehaviour:
   sprintSpeed: 8
   moveSpeed: 10
   sprintKey: 304
-  survival: {fileID: 0}
+  survival: {fileID: 1538365605}
   staminaCostPerSecond: 10
   staminaRecoveryPerSecond: 5
 --- !u!114 &1538365602
@@ -1451,6 +1468,18 @@ Transform:
   - {fileID: 362545524}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1538365605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538365599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 219aa85d3415ce1468b01df235c0e8e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSurvival
 --- !u!1 &1909016254
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class PlayerSurvival : MonoBehaviour
     private Stat hunger;
 
     public float StaminaNormalized() => stamina.Normalized();
+    public float HungerNormalized() => hunger.Normalized();
 
     private void Awake()
     {
