@@ -6,9 +6,13 @@ public class PlayerSurvival : MonoBehaviour
     private Stat health;
     private Stat stamina;
     private Stat hunger;
+    private bool isDead;
+    
+    public event System.Action OnDeath;
 
     public float StaminaNormalized() => stamina.Normalized();
     public float HungerNormalized() => hunger.Normalized();
+    public float HealthNormalized() => health.Normalized();
 
     private void Awake()
     {
@@ -24,6 +28,21 @@ public class PlayerSurvival : MonoBehaviour
         hunger.Decrease(dt);
     }
 
+    public void TakeDamage(float amount)
+    {
+        if (isDead || amount <= 0f)
+        {
+            return;
+        }
+        health.Decrease(amount);
+        if (health.Current <= 0f)
+        {
+            isDead = true;
+            OnDeath?.Invoke();
+        }
+    }
+
+    public bool IsDead() => isDead;
     public bool HasStamina(float amount)
     {
         return stamina.Current >= amount;
