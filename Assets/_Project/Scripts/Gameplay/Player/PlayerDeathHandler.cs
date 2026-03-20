@@ -1,31 +1,38 @@
 using System;
 using UnityEngine;
 
-public class PlayerDeathHandler : MonoBehaviour
+namespace _Project.Scripts.Gameplay.Player
 {
-    [SerializeField] private PlayerSurvival playerSurvival;
-    [SerializeField] private PlayerMovement playerMovement;
 
-    private void OnEnable()
+    public class PlayerDeathHandler : MonoBehaviour
     {
-        if (playerSurvival != null)
-            playerSurvival.OnDeath += OnPlayerDeath;
-    }
+        [SerializeField] private PlayerSurvival playerSurvival;
+        [SerializeField] private PlayerMovement playerMovement;
+        [SerializeField] private PlayerLook playerLook;
 
-    private void OnDisable()
-    {
-        if (playerSurvival != null)
-            playerSurvival.OnDeath -= OnPlayerDeath;
-    }
-
-    private void OnPlayerDeath()
-    {
-        if (playerMovement != null)
+        private void OnEnable()
         {
-            playerMovement.enabled = false;
+            if (playerSurvival != null)
+                playerSurvival.OnDeath += OnPlayerDeath;
+        }
+
+        private void OnDisable()
+        {
+            if (playerSurvival != null)
+                playerSurvival.OnDeath -= OnPlayerDeath;
+        }
+
+        private void OnPlayerDeath()
+        {
+            if (playerMovement != null)
+                playerMovement.enabled = false;
+            if (playerLook != null)
+                playerLook.enabled = false;
+
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+
             Debug.Log("Game Over");
         }
-            
-        
     }
 }

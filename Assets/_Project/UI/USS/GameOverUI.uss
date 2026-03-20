@@ -1,0 +1,41 @@
+.root {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.panel {
+    width: 300px;
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    border-radius: 10px;
+    padding: 20px;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 24px;
+    color: white;
+    margin-bottom: 20px;
+    -unity-text-align: middle-center;
+}
+
+.button {
+    width: 150px;
+    height: 40px;
+
+    background-color: rgb(200, 60, 60);
+    color: white;
+
+    border-radius: 6px;
+}
+
+.button:hover {
+    background-color: rgb(255, 80, 80);
+}

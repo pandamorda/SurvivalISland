@@ -19,6 +19,7 @@ public class PlayerSurvival : MonoBehaviour
         health = new Stat(100);
         stamina = new Stat(100);
         hunger = new Stat(100);
+        Debug.Log(health.Current);
     }
     
 
