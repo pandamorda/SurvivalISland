@@ -165,7 +165,7 @@ MonoBehaviour:
   m_PanelSettings: {fileID: 11400000, guid: de53f7056cf4a8c4891adfa3bd9366be, type: 2}
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: a5814ecbbaad00c4f974f5fea47897e7, type: 3}
-  m_SortingOrder: 3
+  m_SortingOrder: 100
   m_Position: 0
   m_WorldSpaceSizeMode: 1
   m_WorldSpaceWidth: 1920
@@ -1442,6 +1442,7 @@ GameObject:
   - component: {fileID: 1538365600}
   - component: {fileID: 1538365605}
   - component: {fileID: 1538365606}
+  - component: {fileID: 1538365607}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1548,6 +1549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 219aa85d3415ce1468b01df235c0e8e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSurvival
+  damagePerSecond: 5
 --- !u!114 &1538365606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1561,6 +1563,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TakeDamage
   ps: {fileID: 1538365605}
+--- !u!114 &1538365607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538365599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afb7620004fee744ca6ad85f5df3f7bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Gameplay.Player.PlayerDeathHandler
+  playerSurvival: {fileID: 1538365605}
+  playerMovement: {fileID: 1538365601}
+  playerLook: {fileID: 1538365600}
 --- !u!1 &1909016254
 GameObject:
   m_ObjectHideFlags: 0

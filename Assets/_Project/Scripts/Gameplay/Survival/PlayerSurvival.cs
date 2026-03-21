@@ -7,6 +7,8 @@ public class PlayerSurvival : MonoBehaviour
     private Stat stamina;
     private Stat hunger;
     private bool isDead;
+
+    [SerializeField] private float damagePerSecond;
     
     public event System.Action OnDeath;
 
@@ -19,7 +21,6 @@ public class PlayerSurvival : MonoBehaviour
         health = new Stat(100);
         stamina = new Stat(100);
         hunger = new Stat(100);
-        Debug.Log(health.Current);
     }
     
 
@@ -27,8 +28,14 @@ public class PlayerSurvival : MonoBehaviour
     {
         float dt = Time.deltaTime;
         hunger.Decrease(dt);
-    }
 
+        if (hunger.Current <= 0f)
+        {
+            TakeDamage(damagePerSecond * dt);
+        }
+
+    }
+    
     public void TakeDamage(float amount)
     {
         if (isDead || amount <= 0f)

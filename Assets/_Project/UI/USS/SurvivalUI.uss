@@ -44,3 +44,6 @@
 .hunger-fill {
     background-color: rgb(255, 170, 60);
 }
+.health-fill {
+    background-color: rgb(255, 70, 70);
+}

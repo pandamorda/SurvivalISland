@@ -14,6 +14,12 @@
                     <ui:VisualElement name="hunger-fill" class="bar-fill hunger-fill"/>
                 </ui:VisualElement>
             </ui:VisualElement>
+            <ui:VisualElement name="health-wrapper" class="bar-wrapper">
+                <ui:Label text="Health" class="bar-label"/>
+                <ui:VisualElement name="health-background" class="bar-background">
+                    <ui:VisualElement name="health-fill" class="bar-fill health-fill"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
