@@ -10,6 +10,10 @@ public class SurvivalUI : MonoBehaviour
     private VisualElement hungerFill;
     private VisualElement healthFill;
 
+    private VisualElement damageOverlay;
+    
+    private float damageFlash;
+
     private void Awake()
     {
         document = GetComponent<UIDocument>();
@@ -18,7 +22,15 @@ public class SurvivalUI : MonoBehaviour
         var root = document.rootVisualElement; 
         staminaFill = root.Q<VisualElement>("stamina-fill"); 
         hungerFill = root.Q<VisualElement>("hunger-fill"); 
-        healthFill = root.Q<VisualElement>("health-fill"); 
+        healthFill = root.Q<VisualElement>("health-fill");
+
+        damageOverlay = root.Q<VisualElement>("damage-overlay");
+        playerSurvival.OnDamage += OnDamageTaken;
+    }
+
+    private void OnDisable()
+    {
+        playerSurvival.OnDamage -= OnDamageTaken;
     }
 
     private void Update()
@@ -34,5 +46,19 @@ public class SurvivalUI : MonoBehaviour
         staminaFill.style.width = Length.Percent(staminaValue); 
         hungerFill.style.width = Length.Percent(hungerValue);
         healthFill.style.width = Length.Percent(healthValue);
+        
+        damageFlash -= Time.deltaTime * 2f;
+        damageFlash = Mathf.Clamp01(damageFlash);
+        
+        if (damageOverlay != null)
+        {
+             damageOverlay.style.opacity = damageFlash * damageFlash;
+        }
+       
+    }
+
+    private void OnDamageTaken()
+    {
+        damageFlash = 1f;
     }
 }

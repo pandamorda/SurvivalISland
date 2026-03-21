@@ -11,6 +11,7 @@ public class PlayerSurvival : MonoBehaviour
     [SerializeField] private float damagePerSecond;
     
     public event System.Action OnDeath;
+    public event System.Action OnDamage;
 
     public float StaminaNormalized() => stamina.Normalized();
     public float HungerNormalized() => hunger.Normalized();
@@ -43,6 +44,7 @@ public class PlayerSurvival : MonoBehaviour
             return;
         }
         health.Decrease(amount);
+        OnDamage?.Invoke();
         if (health.Current <= 0f)
         {
             isDead = true;

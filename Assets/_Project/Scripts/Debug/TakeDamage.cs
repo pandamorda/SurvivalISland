@@ -12,7 +12,7 @@ public class TakeDamage : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Z))
         {
-            ps.TakeDamage(10);
+            ps.TakeDamage(0.1f);
             
         }
     }
