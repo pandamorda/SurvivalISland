@@ -50,6 +50,20 @@ public class InventoryUI : MonoBehaviour
         if(panel == null) return;
 
         panel.style.display = DisplayStyle.Flex;
+        Refresh();
+        
+    }
+
+    void Refresh()
+    {
+        itemsContainer.Clear();
+
+        foreach (var item in inventory.Items)
+        {
+            var label = new Label($"{item.Key} x{item.Value}");
+            label.AddToClassList("item");
+            itemsContainer.Add(label);
+        }
         
     }
 }

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-   public Dictionary<string, int> items = new Dictionary<string, int>();
+   private Dictionary<string, int> items = new Dictionary<string, int>();
+   public Dictionary<string, int> Items => items;
 
    public void AddItem(string item)
    {

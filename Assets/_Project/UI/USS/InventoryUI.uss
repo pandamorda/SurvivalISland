@@ -1,16 +1,51 @@
+#root {
+    flex-grow: 1;
+}
+
+/* PANEL */
 #inventory-panel {
     position: absolute;
-    right: 20px;
-    top: 20px;
+    right: 30px;
+    top: 30px;
 
-    width: 200px;
-    background-color: rgba(0,0,0,0.8);
-    padding: 10px;
+    width: 260px;
+    padding: 12px;
+
+    background-color: rgba(20, 20, 20, 0.95);
+    border-radius: 12px;
+
+    border: 2px solid rgba(255,255,255,0.08);
 
     display: none;
 }
 
+/* TITLE */
+.inventory-title {
+    font-size: 18px;
+    color: white;
+    unity-font-style: bold;
+
+    margin-bottom: 10px;
+}
+
+/* CONTAINER */
+.items-container {
+    flex-direction: column;
+}
+
+/* ITEM */
 .item {
     color: white;
-    margin-bottom: 4px;
+    font-size: 14px;
+
+    padding: 6px;
+    margin-bottom: 6px;
+
+    background-color: rgba(255,255,255,0.05);
+    border-radius: 6px;
+}
+
+/* HOVER EFFECT */
+.item:hover {
+    background-color: rgba(255,255,255,0.15);
 }
