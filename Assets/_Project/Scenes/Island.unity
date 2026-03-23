@@ -630,7 +630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b609597b54d4a02459a96a2f3a98485b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickableItem
-  itemName: {fileID: 0}
+  itemName: {fileID: 11400000, guid: e9a5511f4544df04fa3650368ee668cf, type: 2}
   inventory: {fileID: 1538365610}
 --- !u!65 &138547215
 BoxCollider:
@@ -1007,7 +1007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b609597b54d4a02459a96a2f3a98485b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickableItem
-  itemName: {fileID: 0}
+  itemName: {fileID: 11400000, guid: e9a5511f4544df04fa3650368ee668cf, type: 2}
   inventory: {fileID: 1538365610}
 --- !u!65 &272346652
 BoxCollider:
@@ -1647,7 +1647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b609597b54d4a02459a96a2f3a98485b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickableItem
-  itemName: {fileID: 0}
+  itemName: {fileID: 11400000, guid: e9a5511f4544df04fa3650368ee668cf, type: 2}
   inventory: {fileID: 1538365610}
 --- !u!4 &368683949 stripped
 Transform:
@@ -2053,7 +2053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b609597b54d4a02459a96a2f3a98485b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickableItem
-  itemName: {fileID: 0}
+  itemName: {fileID: 11400000, guid: e9a5511f4544df04fa3650368ee668cf, type: 2}
   inventory: {fileID: 1538365610}
 --- !u!65 &494902964
 BoxCollider:
@@ -3672,7 +3672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b609597b54d4a02459a96a2f3a98485b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickableItem
-  itemName: {fileID: 0}
+  itemName: {fileID: 11400000, guid: e9a5511f4544df04fa3650368ee668cf, type: 2}
   inventory: {fileID: 1538365610}
 --- !u!65 &775667588
 BoxCollider:
@@ -7636,7 +7636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b609597b54d4a02459a96a2f3a98485b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickableItem
-  itemName: {fileID: 0}
+  itemName: {fileID: 11400000, guid: e9a5511f4544df04fa3650368ee668cf, type: 2}
   inventory: {fileID: 1538365610}
 --- !u!65 &1909465276
 BoxCollider:

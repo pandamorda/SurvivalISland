@@ -10,6 +10,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private UIDocument document;
     private VisualElement panel;
     private VisualElement itemsContainer;
+    private VisualElement overlay;
     
     [SerializeField] private KeyCode openInventoryKey = KeyCode.Tab;
     private bool isOpen;
@@ -21,6 +22,7 @@ public class InventoryUI : MonoBehaviour
         var root = document.rootVisualElement;
         panel = root.Q<VisualElement>("inventory-panel");
         itemsContainer =root.Q<VisualElement>("items-container");
+        overlay = root.Q<VisualElement>("inventory-overlay");
         CloseMenu();
     }
 
@@ -47,6 +49,7 @@ public class InventoryUI : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         
+        overlay.style.display = DisplayStyle.None;
         panel.style.display = DisplayStyle.None;
     }
 
@@ -57,11 +60,28 @@ public class InventoryUI : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         
+        overlay.style.display = DisplayStyle.Flex;
         panel.style.display = DisplayStyle.Flex;
         Refresh();
         
     }
 
+    VisualElement CreateSlot(ItemData item, int count)
+    {
+        var slot = new VisualElement();
+        slot.AddToClassList("item-slot");
+        
+        var icon = new VisualElement();
+        icon.AddToClassList("item-icon");
+        icon.style.backgroundImage = new StyleBackground(item.icon);
+
+        var itenCount = new Label(count.ToString());
+        itenCount.AddToClassList("item-count");
+        
+        slot.Add(icon);
+        slot.Add(itenCount);
+        return slot;
+    }
     void Refresh()
     {
         if (inventory == null) return;
@@ -70,12 +90,11 @@ public class InventoryUI : MonoBehaviour
         foreach (var item in inventory.Items)
         {
             var itemKey = item.Key;
-            var label = new Label($"{item.Key} x{item.Value}");
+            int itemCount = item.Value;
+            var slot = CreateSlot(itemKey, itemCount);
+            itemsContainer.Add(slot);
             
-            label.AddToClassList("item");
-            itemsContainer.Add(label);
-            
-            label.RegisterCallback<ClickEvent>(evt =>
+            slot.RegisterCallback<ClickEvent>(evt =>
             {
                 inventory.UseItem(itemKey);
                 Refresh();

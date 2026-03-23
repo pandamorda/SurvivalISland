@@ -2,50 +2,83 @@
     flex-grow: 1;
 }
 
-/* PANEL */
-#inventory-panel {
+
+#inventory-overlay {
     position: absolute;
-    right: 30px;
-    top: 30px;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
 
-    width: 260px;
-    padding: 12px;
-
-    background-color: rgba(20, 20, 20, 0.95);
-    border-radius: 12px;
-
-    border: 2px solid rgba(255,255,255,0.08);
-
-    display: none;
+    background-color: rgba(0,0,0,0.5);
 }
 
-/* TITLE */
+
+#inventory-panel {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+
+    width: 400px;
+    padding: 20px;
+
+    background-color: rgba(20,20,20,0.95);
+    border-radius: 12px;
+
+    border: 2px solid rgba(255,255,255,0.1);
+}
+
+
 .inventory-title {
-    font-size: 18px;
+    font-size: 22px;
     color: white;
     unity-font-style: bold;
 
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
-/* CONTAINER */
-.items-container {
-    flex-direction: column;
+
+.items-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-/* ITEM */
-.item {
-    color: white;
-    font-size: 14px;
 
-    padding: 6px;
-    margin-bottom: 6px;
+.item-slot {
+    width: 70px;
+    height: 70px;
+
+    position: relative;
 
     background-color: rgba(255,255,255,0.05);
-    border-radius: 6px;
+    border-radius: 8px;
+
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
-/* HOVER EFFECT */
-.item:hover {
+
+.item-icon {
+    width: 100%;
+    height: 100%;
+
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+
+.item-count {
+    position: absolute;
+    right: 5px;
+    bottom: 3px;
+
+    color: white;
+    font-size: 12px;
+}
+
+
+.item-slot:hover {
+    border-color: white;
     background-color: rgba(255,255,255,0.15);
 }

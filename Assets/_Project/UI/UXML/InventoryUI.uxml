@@ -1,8 +1,10 @@
-<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/_Project/UI/USS/InventoryUI.uss?fileID=7433441132597879392&amp;guid=a1f527721ff26ad4eabbf4dff86b3ffb&amp;type=3#InventoryUI"/>
     <ui:VisualElement name="root">
+        <ui:VisualElement name="inventory-overlay"/>
         <ui:VisualElement name="inventory-panel">
-            <ui:Label text="Inventory"/>
-            <ui:VisualElement name="items-container"/>
+            <ui:Label text="Inventory" class="inventory-title"/>
+            <ui:VisualElement name="items-container" class="items-grid"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

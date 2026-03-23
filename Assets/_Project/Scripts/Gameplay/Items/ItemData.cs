@@ -9,7 +9,7 @@ public class ItemData : ScriptableObject
    [TextArea]public string description;
    
    public EffectsType effectType;
-   public float value;
+   public int value;
    public bool isPositive;
 
 }
