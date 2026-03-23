@@ -20,4 +20,19 @@ public class PlayerInventory : MonoBehaviour
       
       Debug.Log("item " + item + " add to inventory" );
    }
+
+   public void UseItem(string item)
+   {
+      if (!items.ContainsKey(item))
+      {
+         return;
+      }
+
+      items[item]--;
+      
+      if (items[item] <= 0)
+      {
+         items.Remove(item);
+      }
+   }
 }
