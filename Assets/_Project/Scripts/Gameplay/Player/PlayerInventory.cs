@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-   private Dictionary<string, int> items = new Dictionary<string, int>();
-   public Dictionary<string, int> Items => items;
+   private Dictionary<ItemData, int> items = new Dictionary<ItemData, int>();
+   public Dictionary<ItemData, int> Items => items;
 
-   public void AddItem(string item)
+   public void AddItem(ItemData item)
    {
       if (items.ContainsKey(item))
       {
@@ -21,7 +21,7 @@ public class PlayerInventory : MonoBehaviour
       Debug.Log("item " + item + " add to inventory" );
    }
 
-   public void UseItem(string item)
+   public void UseItem(ItemData item)
    {
       if (!items.ContainsKey(item))
       {

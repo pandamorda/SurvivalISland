@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PickableItem : MonoBehaviour, IInteractable
 {
-    [SerializeField] private string itemName;
+    [SerializeField] private ItemData itemName;
     [SerializeField] private PlayerInventory inventory;
     public void Interact()
     {
