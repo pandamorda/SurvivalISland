@@ -29,7 +29,7 @@ namespace _Project.Scripts.Gameplay.Player
             if (playerLook != null)
                 playerLook.enabled = false;
 
-            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 
             Debug.Log("Game Over");

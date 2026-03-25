@@ -7741,7 +7741,7 @@ MonoBehaviour:
   damagePerSecond: 5
   timeSystem: {fileID: 0}
   coldDamagePerSecond: 0
-  Tc: 0
+  coldThreshold: 0
 --- !u!114 &1538365606
 MonoBehaviour:
   m_ObjectHideFlags: 0

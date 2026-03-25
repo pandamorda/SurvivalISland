@@ -3,9 +3,13 @@ using UnityEngine;
 
 public class TimeSystem : MonoBehaviour
 {
-    [SerializeField] private float dayDuration;
     [SerializeField] private Light sun;
     [SerializeField] private AnimationCurve lightIntensityCurve;
+    
+    [SerializeField] private float dayDuration;
+    [SerializeField] private float minTemperature;
+    [SerializeField] private float maxTemperature;
+    private float CurrentTemperature { get; set; }
     
     private int dayCount = 0;
     private float time = 0f;

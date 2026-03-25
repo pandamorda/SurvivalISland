@@ -28,7 +28,7 @@ public class GameOverUI : MonoBehaviour
         
         restartButton.style.width = 200;
         restartButton.style.height = 60;
-        Debug.Log(restartButton);
+        
         panel.style.display = DisplayStyle.None;
         
         restartButton.clicked += RestartGame;
@@ -40,7 +40,6 @@ public class GameOverUI : MonoBehaviour
 
     public void RestartGame()
     {
-        Debug.Log("REstart");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         
     }
