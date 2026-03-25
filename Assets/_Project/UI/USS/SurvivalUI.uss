@@ -65,3 +65,6 @@
 .health-fill {
     background-color: rgb(255, 70, 70);
 }
+.temperature-fill {
+    background-color: rgb(255, 255,255);
+}

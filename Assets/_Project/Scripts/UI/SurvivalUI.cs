@@ -9,7 +9,8 @@ public class SurvivalUI : MonoBehaviour
     private VisualElement staminaFill; 
     private VisualElement hungerFill;
     private VisualElement healthFill;
-
+    private VisualElement temperatureFill;
+    
     private VisualElement damageOverlay;
     
     private float damageFlash;
@@ -23,6 +24,7 @@ public class SurvivalUI : MonoBehaviour
         staminaFill = root.Q<VisualElement>("stamina-fill"); 
         hungerFill = root.Q<VisualElement>("hunger-fill"); 
         healthFill = root.Q<VisualElement>("health-fill");
+        temperatureFill = root.Q<VisualElement>("temperature-fill");
 
         damageOverlay = root.Q<VisualElement>("damage-overlay");
         playerSurvival.OnDamage += OnDamageTaken;
@@ -42,7 +44,9 @@ public class SurvivalUI : MonoBehaviour
         float staminaValue = playerSurvival.StaminaNormalized() * 100f; 
         float hungerValue = playerSurvival.HungerNormalized() * 100f;
         float healthValue = playerSurvival.HealthNormalized() * 100f;
+        float tempNormalized = playerSurvival.TemperatureNormalized();
         
+        temperatureFill.style.backgroundColor = GetTemperatureColor(tempNormalized);
         staminaFill.style.width = Length.Percent(staminaValue); 
         hungerFill.style.width = Length.Percent(hungerValue);
         healthFill.style.width = Length.Percent(healthValue);
@@ -56,7 +60,17 @@ public class SurvivalUI : MonoBehaviour
         }
        
     }
-
+    Color GetTemperatureColor(float normalized)
+    {
+        if (normalized < 0.5f)
+        {
+            return Color.Lerp(Color.blue, Color.green, normalized * 2f);
+        }
+        else
+        {
+            return Color.Lerp(Color.green, Color.red, (normalized - 0.5f) * 2f);
+        }
+    }
     private void OnDamageTaken()
     {
         damageFlash = 1f;
