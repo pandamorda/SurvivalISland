@@ -72,7 +72,22 @@ public class PlayerMovement : MonoBehaviour
         root = GetComponent<PlayerRoot>();
 
     }
-    
+    void OnEnable()
+    {
+        if (root != null)
+            root.Survival.OnDeath += Disable;
+    }
+
+    void OnDisable()
+    {
+        if (root != null)
+            root.Survival.OnDeath -= Disable;
+    }
+
+    void Disable()
+    {
+        enabled = false;
+    }
     void Update()
     {
         ApplyGravity();
