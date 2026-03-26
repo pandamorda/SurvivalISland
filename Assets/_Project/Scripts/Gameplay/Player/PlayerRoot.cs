@@ -6,6 +6,7 @@ public class PlayerRoot : MonoBehaviour
     public PlayerLook Look { get; private set; }
     public PlayerSurvival Survival { get; private set; }
     public PlayerInteraction Interaction { get; private set; }
+    public PlayerInventory Inventory { get; private set; }
 
     private void Awake()
     {
@@ -13,5 +14,6 @@ public class PlayerRoot : MonoBehaviour
         Look = GetComponent<PlayerLook>();
         Survival = GetComponent<PlayerSurvival>();
         Interaction = GetComponent<PlayerInteraction>();
+        Inventory = GetComponent<PlayerInventory>();
     }
 }

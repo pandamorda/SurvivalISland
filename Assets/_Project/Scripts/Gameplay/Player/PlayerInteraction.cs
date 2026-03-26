@@ -31,7 +31,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         enabled = false;
     }
-    void HandleFocus()
+    void UpdateFocus()
     {
         Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
 
@@ -56,7 +56,7 @@ public class PlayerInteraction : MonoBehaviour
             current = null;
         }
     }
-    void HandleInput()
+    void HandleInteractionInput()
     {
         if (Input.GetKeyDown(interactKey) && current != null)
         {
@@ -65,7 +65,7 @@ public class PlayerInteraction : MonoBehaviour
     }
     void Update()
     {
-        HandleFocus();
-        HandleInput();
+        UpdateFocus();
+        HandleInteractionInput();
     }
 }

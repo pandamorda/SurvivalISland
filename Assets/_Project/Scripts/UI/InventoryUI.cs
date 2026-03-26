@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Cursor = UnityEngine.Cursor;
@@ -5,7 +6,7 @@ using Cursor = UnityEngine.Cursor;
 
 public class InventoryUI : MonoBehaviour
 {
-    [SerializeField] private PlayerInventory inventory;
+    private PlayerRoot root;
 
     [SerializeField] private UIDocument document;
     private VisualElement panel;
@@ -15,17 +16,36 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private KeyCode openInventoryKey = KeyCode.Tab;
     private bool isOpen;
 
-    
-    
-    void OnEnable()
+    private void Awake()
     {
-        var root = document.rootVisualElement;
-        panel = root.Q<VisualElement>("inventory-panel");
-        itemsContainer =root.Q<VisualElement>("items-container");
-        overlay = root.Q<VisualElement>("inventory-overlay");
-        CloseMenu();
+        root = GetComponent<PlayerRoot>();
     }
 
+    void OnEnable()
+    {
+        var rootUI = document.rootVisualElement;
+        
+        panel = rootUI.Q<VisualElement>("inventory-panel");
+        itemsContainer =rootUI.Q<VisualElement>("items-container");
+        overlay = rootUI.Q<VisualElement>("inventory-overlay");
+        
+        CloseMenu();
+
+        if (root != null)
+            root.Survival.OnDeath += Disable;
+    }
+
+    private void OnDisable()
+    {
+        if (root != null)
+            root.Survival.OnDeath -= Disable;
+    }
+
+    void Disable()
+    {
+        CloseMenu(); 
+        enabled = false;
+    }
     private void Update()
     {
         if (Input.GetKeyDown(openInventoryKey))
@@ -84,10 +104,10 @@ public class InventoryUI : MonoBehaviour
     }
     void Refresh()
     {
-        if (inventory == null) return;
+        if (root == null) return;
         itemsContainer.Clear();
 
-        foreach (var item in inventory.Items)
+        foreach (var item in root.Inventory.Items)
         {
             var itemKey = item.Key;
             int itemCount = item.Value;
@@ -96,7 +116,7 @@ public class InventoryUI : MonoBehaviour
             
             slot.RegisterCallback<ClickEvent>(evt =>
             {
-                inventory.UseItem(itemKey);
+                root.Inventory.UseItem(itemKey);
                 Refresh();
             }
                 
