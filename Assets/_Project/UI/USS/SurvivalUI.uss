@@ -68,3 +68,44 @@
 .temperature-fill {
     background-color: rgb(255, 255,255);
 }
+
+.world-panel {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    flex-direction: row;
+    align-items: center;
+
+    padding: 8px 14px;
+
+    background-color: rgba(0, 0, 0, 0.45);
+    border-radius: 10px;
+
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-color: rgba(255, 255, 255, 0.08);
+
+    -unity-font-style: bold;
+}
+
+.world-text {
+    color: #ffffff;
+    font-size: 14px;
+
+    margin-left: 6px;
+    margin-right: 6px;
+
+    unity-text-align: middle-center;
+}
+
+.day-count {
+    color: #dcdcdc;
+    font-size: 13px;
+}
+
+.divider {
+    width: 1px;
+    height: 14px;
+    background-color: rgba(255, 255, 255, 0.15);
+}

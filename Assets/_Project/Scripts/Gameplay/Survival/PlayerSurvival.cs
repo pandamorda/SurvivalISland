@@ -11,6 +11,7 @@ public class PlayerSurvival : MonoBehaviour
     
     private bool isDead;
 
+    [SerializeField] private TimeSystem timeSystem;
     [SerializeField] private float damagePerSecond;
     [SerializeField] private float coldDamagePerSecond;
     [SerializeField] private float minComfortTemperature = 30f;
@@ -29,14 +30,12 @@ public class PlayerSurvival : MonoBehaviour
         stamina = new Stat(100);
         hunger = new Stat(100);
         temperature = new Stat(100);
+        temperature.Decrease(50);
     }
-    
 
-    private void Update()
+    public void HandleTemperature()
     {
-        float dt = Time.deltaTime;
         float temp = temperature.Current;
-        
         if (temp < minComfortTemperature)
         {
             float coldFactor = Mathf.InverseLerp(minComfortTemperature, 0f, temp);
@@ -48,12 +47,24 @@ public class PlayerSurvival : MonoBehaviour
             float coldFactor = Mathf.InverseLerp(maxComfortTemperature, 100f, temp);
             TakeDamage(damagePerSecond * coldFactor * Time.deltaTime);
         }
-        hunger.Decrease(dt);
         
-        if (hunger.Current <= 0f)
-        {
-            TakeDamage(damagePerSecond * dt);
-        }
+    }
+
+    public void HandleHungry()
+    {
+         float dt = Time.deltaTime;
+         hunger.Decrease(dt);
+                                           
+         if (hunger.Current <= 0f)
+         {
+             TakeDamage(damagePerSecond * dt);
+         }
+    }
+    private void Update()
+    {
+        
+        HandleTemperature();
+        HandleHungry();
 
     }
     

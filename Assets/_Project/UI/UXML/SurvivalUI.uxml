@@ -29,4 +29,21 @@
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
+    <ui:VisualElement name="world-panel" class="world-panel">
+
+        <ui:Label name="day-count-label" class="world-text day-count" text="Day 1"/>
+
+        <ui:VisualElement class="divider"/>
+
+        <ui:Label name="time-label" class="world-text" text="12:00"/>
+
+        <ui:VisualElement class="divider"/>
+
+        <ui:Label name="day-state-label" class="world-text" text="Day"/>
+
+        <ui:VisualElement class="divider"/>
+
+        <ui:Label name="temp-label" class="world-text" text="+20°C"/>
+
+    </ui:VisualElement>
 </ui:UXML>

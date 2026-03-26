@@ -4,12 +4,17 @@ using System; using UnityEngine; using UnityEngine.UIElements;
 public class SurvivalUI : MonoBehaviour
 {
     [SerializeField] private PlayerSurvival playerSurvival; 
+    [SerializeField] private TimeSystem timeSystem;
     
     private UIDocument document; 
     private VisualElement staminaFill; 
     private VisualElement hungerFill;
     private VisualElement healthFill;
     private VisualElement temperatureFill;
+    
+    private Label dayCount;
+    private Label temperature;
+    private Label time;
     
     private VisualElement damageOverlay;
     
@@ -25,6 +30,9 @@ public class SurvivalUI : MonoBehaviour
         hungerFill = root.Q<VisualElement>("hunger-fill"); 
         healthFill = root.Q<VisualElement>("health-fill");
         temperatureFill = root.Q<VisualElement>("temperature-fill");
+
+        dayCount = root.Q<Label>("day-count-label");
+        
 
         damageOverlay = root.Q<VisualElement>("damage-overlay");
         playerSurvival.OnDamage += OnDamageTaken;
@@ -50,6 +58,9 @@ public class SurvivalUI : MonoBehaviour
         staminaFill.style.width = Length.Percent(staminaValue); 
         hungerFill.style.width = Length.Percent(hungerValue);
         healthFill.style.width = Length.Percent(healthValue);
+
+        dayCount.text = "Day " + timeSystem.DayCount.ToString();
+        
         
         damageFlash -= Time.deltaTime * 2f;
         damageFlash = Mathf.Clamp01(damageFlash);
