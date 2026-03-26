@@ -5944,6 +5944,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SurvivalUI
   playerSurvival: {fileID: 1538365605}
+  timeSystem: {fileID: 1037779979}
 --- !u!1 &1139944620 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b416ac4af8622524c83332995ff3b1a7, type: 3}
@@ -6606,7 +6607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646f791f97f9cdd439b1f2d0984e7ae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryUI
-  inventory: {fileID: 1538365610}
+  root: {fileID: 1538365602}
   document: {fileID: 1296163962}
   openInventoryKey: 9
 --- !u!114 &1296163962
@@ -7670,7 +7671,6 @@ MonoBehaviour:
   sprintSpeed: 8
   moveSpeed: 10
   sprintKey: 304
-  survival: {fileID: 1538365605}
   staminaCostPerSecond: 10
   staminaRecoveryPerSecond: 5
 --- !u!114 &1538365602
@@ -7738,10 +7738,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 219aa85d3415ce1468b01df235c0e8e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSurvival
+  timeSystem: {fileID: 1037779979}
   damagePerSecond: 5
-  timeSystem: {fileID: 0}
   coldDamagePerSecond: 0
-  coldThreshold: 0
+  minComfortTemperature: 15
+  maxComfortTemperature: 35
 --- !u!114 &1538365606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7767,9 +7768,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb7620004fee744ca6ad85f5df3f7bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Gameplay.Player.PlayerDeathHandler
-  playerSurvival: {fileID: 1538365605}
-  playerMovement: {fileID: 1538365601}
-  playerLook: {fileID: 1538365600}
 --- !u!114 &1538365608
 MonoBehaviour:
   m_ObjectHideFlags: 0

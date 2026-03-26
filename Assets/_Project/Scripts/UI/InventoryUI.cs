@@ -6,7 +6,7 @@ using Cursor = UnityEngine.Cursor;
 
 public class InventoryUI : MonoBehaviour
 {
-    private PlayerRoot root;
+    [SerializeField] private PlayerRoot root;
 
     [SerializeField] private UIDocument document;
     private VisualElement panel;
@@ -15,11 +15,7 @@ public class InventoryUI : MonoBehaviour
     
     [SerializeField] private KeyCode openInventoryKey = KeyCode.Tab;
     private bool isOpen;
-
-    private void Awake()
-    {
-        root = GetComponent<PlayerRoot>();
-    }
+    
 
     void OnEnable()
     {
@@ -31,7 +27,7 @@ public class InventoryUI : MonoBehaviour
         
         CloseMenu();
 
-        if (root != null)
+        if (root != null && root.Survival != null)
             root.Survival.OnDeath += Disable;
     }
 

@@ -74,8 +74,10 @@ public class PlayerMovement : MonoBehaviour
     }
     void OnEnable()
     {
-        if (root != null)
+        if (root != null && root.Survival != null)
+            
             root.Survival.OnDeath += Disable;
+        
     }
 
     void OnDisable()

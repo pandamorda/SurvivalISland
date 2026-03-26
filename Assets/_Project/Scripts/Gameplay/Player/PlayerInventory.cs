@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -6,6 +7,13 @@ public class PlayerInventory : MonoBehaviour
 {
    private Dictionary<ItemData, int> items = new Dictionary<ItemData, int>();
    public Dictionary<ItemData, int> Items => items;
+
+   private PlayerRoot root;
+
+   private void Awake()
+   {
+      root = GetComponent<PlayerRoot>();
+   }
 
    public void AddItem(ItemData item)
    {
@@ -26,6 +34,10 @@ public class PlayerInventory : MonoBehaviour
          return;
       }
 
+      if (item.resourceType == ResourceType.Food)
+      {
+         root.Survival.AddHunger(item.value);
+      }
       items[item]--;
       
       if (items[item] <= 0)

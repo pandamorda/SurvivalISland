@@ -33,10 +33,14 @@ public class PlayerSurvival : MonoBehaviour
         
     }
 
+    public void AddHunger(float amount)
+    {
+        hunger.Increase(amount);
+    }
     public void HandleTemperature()
     {
         float temp = temperature.Current;
-        Debug.Log("Current " + temp);
+        
         if (temp < minComfortTemperature)
         {
             float coldFactor = 1f -  Mathf.InverseLerp(-10f,minComfortTemperature, temp);

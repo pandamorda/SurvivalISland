@@ -34,7 +34,7 @@ public class PlayerLook : MonoBehaviour
     }
     void OnEnable()
     {
-        if (root != null)
+        if (root != null && root.Survival != null)
             root.Survival.OnDeath += Disable;
     }
 

@@ -7,7 +7,6 @@ public class PickableItem : MonoBehaviour, IInteractable
     public void Interact()
     {
         inventory.AddItem(itemName);
-        Debug.Log("Picked up " + itemName);
         Destroy(gameObject, 0.01f);
     }
 

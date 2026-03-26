@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec5a2e172e42500468d0e31073cf8383, type: 3}
   m_Name: Banana
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemName: 
+  itemName: "\u0437\u0444\u0437\u0444"
   icon: {fileID: 21300000, guid: 6d1190070379e07409cc7b4f8f4ef1d1, type: 3}
   resourceType: 0
   description: 
   effectType: 0
-  value: 0
+  value: 20
   isPositive: 0
