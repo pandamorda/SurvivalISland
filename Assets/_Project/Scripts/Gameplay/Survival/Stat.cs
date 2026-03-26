@@ -20,6 +20,12 @@ public class Stat
         current = max;
     }
 
+    public Stat(float maxValue, float startValue)
+    {
+        max = MathF.Max(0f, maxValue);
+        current = startValue;
+    }
+
     public void Increase(float value)
     {
         current = Mathf.Clamp(current + value, 0f, max);

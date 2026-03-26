@@ -6,28 +6,32 @@ namespace _Project.Scripts.Gameplay.Player
 
     public class PlayerDeathHandler : MonoBehaviour
     {
-        [SerializeField] private PlayerSurvival playerSurvival;
-        [SerializeField] private PlayerMovement playerMovement;
-        [SerializeField] private PlayerLook playerLook;
-
+         private PlayerRoot  root;
+        
+         private void Awake()
+         {
+             root = GetComponent<PlayerRoot>();
+         }
         private void OnEnable()
         {
-            if (playerSurvival != null)
-                playerSurvival.OnDeath += OnPlayerDeath;
+            if (root != null)
+                root.Survival.OnDeath += OnPlayerDeath;
         }
 
         private void OnDisable()
         {
-            if (playerSurvival != null)
-                playerSurvival.OnDeath -= OnPlayerDeath;
+            if (root != null)
+                root.Survival.OnDeath -= OnPlayerDeath;
         }
 
         private void OnPlayerDeath()
         {
-            if (playerMovement != null)
-                playerMovement.enabled = false;
-            if (playerLook != null)
-                playerLook.enabled = false;
+            if (root != null)
+            {
+                root.Movement.enabled = false;
+                root.Look.enabled = false;
+            }
+                
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;

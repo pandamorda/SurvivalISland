@@ -13,12 +13,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
     
-    [SerializeField] private PlayerSurvival survival;
+     private PlayerRoot root;
     [SerializeField] private float staminaCostPerSecond = 10f;
     [SerializeField] private float staminaRecoveryPerSecond = 5f;
     
     private float yVelocity;
    
+    
     void Move()
     {
         float moveX = Input.GetAxis("Horizontal");
@@ -27,15 +28,15 @@ public class PlayerMovement : MonoBehaviour
         float currentSpeed;
         float staminaCost = staminaCostPerSecond * Time.deltaTime;
         
-        if (Input.GetKey(sprintKey) && survival.HasStamina(staminaCost))
+        if (Input.GetKey(sprintKey) && root.Survival.HasStamina(staminaCost))
         {
             currentSpeed = sprintSpeed;
-            survival.ConsumeStamina(staminaCost);
+            root.Survival.ConsumeStamina(staminaCost);
         }
         else
         {
             currentSpeed = moveSpeed;
-            survival.RecoverStamina(staminaRecoveryPerSecond * Time.deltaTime);
+            root.Survival.RecoverStamina(staminaRecoveryPerSecond * Time.deltaTime);
         }
       
         
@@ -68,12 +69,15 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
+        root = GetComponent<PlayerRoot>();
+
     }
     
     void Update()
     {
         ApplyGravity();
         Move();
+        
     }
     
     
