@@ -6,8 +6,31 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private float interactDistance = 3f;
     [SerializeField] private Camera playerCamera;
     [SerializeField] private KeyCode interactKey = KeyCode.E;
+    
     private IInteractable current;
+    private PlayerRoot root;
 
+    private void Awake()
+    {
+        root = GetComponent<PlayerRoot>();
+    }
+
+    private void OnEnable()
+    {
+        if(root != null)
+            root.Survival.OnDeath += Disable;
+    }
+
+    private void OnDisable()
+    {
+        if (root != null)
+            root.Survival.OnDeath -= Disable;
+    }
+
+    void Disable()
+    {
+        enabled = false;
+    }
     void HandleFocus()
     {
         Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
