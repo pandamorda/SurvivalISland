@@ -57,3 +57,8 @@ public class GameOverUI : MonoBehaviour
         panel.style.display = DisplayStyle.Flex;
     }
 }
+
+
+
+
+

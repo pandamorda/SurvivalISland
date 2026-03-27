@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PickableItem : MonoBehaviour, IInteractable
@@ -9,6 +10,7 @@ public class PickableItem : MonoBehaviour, IInteractable
         inventory.AddItem(itemName);
         Destroy(gameObject, 0.01f);
     }
+    
 
     public void OnFocus() { }
     public void OnLoseFocus() { }
