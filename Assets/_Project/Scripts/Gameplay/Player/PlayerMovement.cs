@@ -93,7 +93,20 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         ApplyGravity();
-        Move();
+        if (!root.Water.InWater)
+        {
+             Move();
+        }
+        else
+        {
+           Swim(); 
+        }
+       
+        
+    }
+
+    void Swim()
+    {
         
     }
     
