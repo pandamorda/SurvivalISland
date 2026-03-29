@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController _characterController; 
     
     [SerializeField] private float gravity = -9.81f;
+    [SerializeField] private float waterGravity = -1.56f;
     [SerializeField] private float jumpForce = 10f;
     
     [SerializeField] private float sprintSpeed = 10f;
@@ -18,7 +19,28 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float staminaRecoveryPerSecond = 5f;
     
     private float yVelocity;
-   
+    void Swim()
+    {
+        float moveX = Input.GetAxis("Horizontal");
+        float moveY = Input.GetAxis("Vertical");
+
+        Vector3 moveDirection = transform.right * moveX
+                                + transform.forward * moveY;
+
+        moveDirection = Vector3.ClampMagnitude(moveDirection, 1f);
+        moveDirection *= moveSpeed * 0.6f;
+
+       
+        if (Input.GetKey(KeyCode.Space))
+        {
+            yVelocity = 3f;
+        }
+
+        moveDirection.y = yVelocity;
+
+        _characterController.Move(moveDirection * Time.deltaTime);
+    }
+
     
     void Move()
     {
@@ -52,17 +74,28 @@ public class PlayerMovement : MonoBehaviour
 
     void ApplyGravity()
     {
-        if (_characterController.isGrounded)
+        if (root.Water.InWater)
         {
-            yVelocity = -2f;
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                yVelocity = jumpForce;
-            }
+          
+                yVelocity += waterGravity * Time.deltaTime;
+            
+                if (yVelocity < -3f)
+                    yVelocity = -3f;
         }
         else
         {
-            yVelocity += gravity * Time.deltaTime;
+            if (_characterController.isGrounded)
+            {
+                yVelocity = -2f;
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    yVelocity = jumpForce;
+                }
+            }
+            else
+            {
+                yVelocity += gravity * Time.deltaTime;
+            }
         }
     }
     
@@ -93,22 +126,22 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         ApplyGravity();
-        if (!root.Water.InWater)
+        if (root.Water.InWater)
+        {
+            Swim();
+        }
+           
+        else
         {
              Move();
         }
-        else
-        {
-           Swim(); 
-        }
+       
+        
        
         
     }
 
-    void Swim()
-    {
-        
-    }
+
     
     
 }
