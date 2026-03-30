@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float sprintSpeed = 10f;
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
-    
+    private Vector3 swimVelocity;
      private PlayerRoot root;
     [SerializeField] private float staminaCostPerSecond = 10f;
     [SerializeField] private float staminaRecoveryPerSecond = 5f;
@@ -28,17 +28,18 @@ public class PlayerMovement : MonoBehaviour
                                 + transform.forward * moveY;
 
         moveDirection = Vector3.ClampMagnitude(moveDirection, 1f);
-        moveDirection *= moveSpeed * 0.6f;
-
+        Vector3 targetVelocity = moveDirection * moveSpeed * 0.9f;
+        
        
         if (Input.GetKey(KeyCode.Space))
         {
             yVelocity = 3f;
         }
 
-        moveDirection.y = yVelocity;
-
-        _characterController.Move(moveDirection * Time.deltaTime);
+        
+        swimVelocity = Vector3.Lerp(swimVelocity, targetVelocity, Time.deltaTime * 2f);
+        swimVelocity.y = yVelocity;
+        _characterController.Move(swimVelocity * Time.deltaTime);
     }
 
     
@@ -71,16 +72,30 @@ public class PlayerMovement : MonoBehaviour
         moveDirection.y = yVelocity;
         _characterController.Move(moveDirection * Time.deltaTime);
     }
-
+ 
     void ApplyGravity()
     {
         if (root.Water.InWater)
         {
           
-                yVelocity += waterGravity * Time.deltaTime;
-            
-                if (yVelocity < -3f)
-                    yVelocity = -3f;
+            float depth = root.Water.YHeight;
+
+           
+            float targetDepth = 0.5f;
+
+            // якщо ми нижче targetDepth -> сила вгору
+            // якщо вище -> сила вниз
+            float offset = targetDepth - depth;
+
+            float buoyancyForce = 4f;   // сила "виштовхування"
+            float waterDamping = 3f;    // гасіння стрибків
+
+            yVelocity += offset * buoyancyForce * Time.deltaTime;
+            yVelocity -= yVelocity * waterDamping * Time.deltaTime;
+            float wave = Mathf.Sin(Time.time * 2f) * 0.3f;
+            yVelocity += wave * Time.deltaTime;
+            // невелике обмеження
+            yVelocity = Mathf.Clamp(yVelocity, -2f, 2f);
         }
         else
         {
