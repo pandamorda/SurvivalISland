@@ -2,39 +2,55 @@ using UnityEngine;
 
 public class PlayerWater : MonoBehaviour
 {
-   private PlayerRoot root;
-   private bool inWater;
-   private float yHeight;
-   public float YHeight => yHeight;
-   public bool InWater => inWater;
-   private float yWater;
+    private PlayerRoot root;
+    private bool inWater;
 
-   void Awake()
-   {
-      root = GetComponent<PlayerRoot>();
-   }
-   public void EnterWater(float yWater)
-   {
-      Debug.Log(gameObject.name + "in water");
-      inWater = true;
-      this.yWater = yWater;
+    // Базова Y-координата поверхні води (з WaterVolume)
+    private float waterSurfaceY;
 
-   }
+    // Параметри хвиль — мають відповідати шейдеру WaterGraph
+    [Header("Wave Sync (must match WaterGraph shader)")]
+    [SerializeField] private float waveHeight1    = 0.2f;
+    [SerializeField] private float waveFrequency1 = 2f;
+    [SerializeField] private float waveSpeed1     = 1f;
+    [SerializeField] private float waveHeight2    = 0.1f;
+    [SerializeField] private float waveFrequency2 = 1.5f;
+    [SerializeField] private float waveSpeed2     = 1f;
 
-   public void ExitWater()
-   {
-      Debug.Log(gameObject.name + "not in water");
-      inWater = false;
-   }
-   
-   private void Update()
-   {
-      if (root != null)
-      {
-       
-         float playerY = transform.position.y;
-         yHeight = ( yWater - playerY );
-      }
-      
-   }
+    /// <summary>Реальна висота поверхні з урахуванням хвиль у поточній XZ-позиції гравця.</summary>
+    public float WaterSurfaceY
+    {
+        get
+        {
+            float x = transform.position.x;
+            float z = transform.position.z;
+            float wave1 = Mathf.Sin(x * waveFrequency1 + Time.time * waveSpeed1) * waveHeight1;
+            float wave2 = Mathf.Cos(z * waveFrequency2 + Time.time * waveSpeed2) * waveHeight2;
+            return waterSurfaceY + wave1 + wave2;
+        }
+    }
+
+    /// <summary>Наскільки гравець занурений нижче поверхні (позитивне = під водою).</summary>
+    public float SubmersionDepth => WaterSurfaceY - transform.position.y;
+
+    /// <summary>Чи знаходиться гравець у воді.</summary>
+    public bool InWater => inWater;
+
+    void Awake()
+    {
+        root = GetComponent<PlayerRoot>();
+    }
+
+    public void EnterWater(float surfaceY)
+    {
+        inWater = true;
+        waterSurfaceY = surfaceY;
+        Debug.Log($"{gameObject.name} entered water at Y={surfaceY}");
+    }
+
+    public void ExitWater()
+    {
+        inWater = false;
+        Debug.Log($"{gameObject.name} exited water");
+    }
 }
