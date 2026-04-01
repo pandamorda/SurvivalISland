@@ -21,7 +21,7 @@ public class TimeSystem : MonoBehaviour
     {
         time += Time.deltaTime / dayDuration;
         sun.transform.rotation = Quaternion.Euler(time * 360f - 90f, 170f, 0f);
-        sun.intensity = lightIntensityCurve.Evaluate(time);
+        sun.intensity = lightIntensityCurve.Evaluate(time*100000);
         
         if (time >= 1)
         {
