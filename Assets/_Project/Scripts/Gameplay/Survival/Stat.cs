@@ -16,13 +16,13 @@ public class Stat
     
     public Stat(float maxValue)
     {
-        max = MathF.Max(0f, maxValue);
+        max = Mathf.Max(0f, maxValue);
         current = max;
     }
 
     public Stat(float maxValue, float startValue)
     {
-        max = MathF.Max(0f, maxValue);
+        max = Mathf.Max(0f, maxValue);
         current = startValue;
     }
 

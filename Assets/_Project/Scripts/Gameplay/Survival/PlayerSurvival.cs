@@ -33,6 +33,15 @@ public class PlayerSurvival : MonoBehaviour
         
     }
 
+    public float TemperatureSystem()
+    {
+        return temperature.Current;
+    }
+
+    public void ModifyTemperature(float delta)
+    {
+        temperature.Increase(delta);
+    }
     public void AddHunger(float amount)
     {
         hunger.Increase(amount);

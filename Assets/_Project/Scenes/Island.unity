@@ -363,7 +363,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 83496675059784916, guid: af3ced4d7aa58ec4ebb12a7925cdc982, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.193325
+      value: -2.0375252
       objectReference: {fileID: 0}
     - target: {fileID: 83496675059784916, guid: af3ced4d7aa58ec4ebb12a7925cdc982, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5618,11 +5618,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b9363a88120931c41822e4c63195ef38, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.536469
+      value: 34.085632
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9363a88120931c41822e4c63195ef38, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.6345158
+      value: -2.229745
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9363a88120931c41822e4c63195ef38, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5630,19 +5630,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9363a88120931c41822e4c63195ef38, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9976445
+      value: 0.99332064
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9363a88120931c41822e4c63195ef38, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.017546806
+      value: 0.0021271147
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9363a88120931c41822e4c63195ef38, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.06617296
+      value: 0.115084544
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9363a88120931c41822e4c63195ef38, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.004340103
+      value: 0.008073098
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9363a88120931c41822e4c63195ef38, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7631,8 +7631,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeSystem
   sun: {fileID: 410087040}
-  nightVolume: {fileID: 679587584}
+  moon: {fileID: 463457412}
   globalVolume: {fileID: 832575518}
+  daySky: {fileID: 8900000, guid: 3b5d67736d7b8ad4f8da4d58eaef0b98, type: 3}
+  nightSky: {fileID: 8900000, guid: 09999639e73bcd64abda22253af612d8, type: 3}
   luxCurve:
     serializedVersion: 2
     m_Curve:
@@ -7786,10 +7788,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  moon: {fileID: 463457412}
   dayDuration: 40
-  minTemperature: -5
-  maxTemperature: 25
 --- !u!4 &1040900409 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5127165132946539503, guid: 73c04413a0d2c604dba038fd36be5f01, type: 3}
@@ -8593,7 +8592,7 @@ MonoBehaviour:
   verticalOffset: 0
   followWaterCurrent: 0
   currentSpeedMultiplier: 1
-  length: 2
+  length: 1
   width: 1
   showGizmos: 1
   positionLerpSpeed: 5
