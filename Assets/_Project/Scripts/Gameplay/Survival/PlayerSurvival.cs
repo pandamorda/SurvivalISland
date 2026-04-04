@@ -33,7 +33,7 @@ public class PlayerSurvival : MonoBehaviour
         
     }
 
-    public float TemperatureSystem()
+    public float GetTemperature()
     {
         return temperature.Current;
     }
@@ -44,7 +44,7 @@ public class PlayerSurvival : MonoBehaviour
     }
     public void AddHunger(float amount)
     {
-        hunger.Increase(amount);
+        hunger.Increase(amount * Time.deltaTime);
     }
     public void HandleTemperature()
     {
@@ -58,8 +58,8 @@ public class PlayerSurvival : MonoBehaviour
         
         if (temp > maxComfortTemperature)
         {
-            float coldFactor = Mathf.InverseLerp(maxComfortTemperature, 50f, temp);
-            TakeDamage(damagePerSecond * coldFactor * Time.deltaTime);
+            float warmFactor = Mathf.InverseLerp(maxComfortTemperature, 50f, temp);
+            TakeDamage(damagePerSecond * warmFactor * Time.deltaTime);
         }
         
     }
