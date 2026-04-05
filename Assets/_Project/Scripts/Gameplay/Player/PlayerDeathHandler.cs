@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace _Project.Scripts.Gameplay.Player
@@ -30,6 +29,7 @@ namespace _Project.Scripts.Gameplay.Player
             {
                 root.Movement.enabled = false;
                 root.Look.enabled = false;
+                root.Interaction.enabled = false;
             }
                 
 

@@ -1,18 +1,13 @@
-using System;
 using UnityEngine;
 
 public class PlayerLook : MonoBehaviour
 {
     [SerializeField]private Transform viewPivot;
     [SerializeField, Range(10f, 500f)] private float sensitivity = 100f;
-    private PlayerRoot root;
+    
    
     private float verticalRotation;
-
-    private void Awake()
-    {
-        root = GetComponent<PlayerRoot>();
-    }
+    
 
     void Start()
     {
@@ -32,20 +27,5 @@ public class PlayerLook : MonoBehaviour
         viewPivot.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
         
     }
-    void OnEnable()
-    {
-        if (root != null && root.Survival != null)
-            root.Survival.OnDeath += Disable;
-    }
-
-    void OnDisable()
-    {
-        if (root != null)
-            root.Survival.OnDeath -= Disable;
-    }
-
-    void Disable()
-    {
-        enabled = false;
-    }
+    
 }

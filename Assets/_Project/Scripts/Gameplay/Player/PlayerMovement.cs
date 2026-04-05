@@ -42,20 +42,7 @@ public class PlayerMovement : MonoBehaviour
         _characterController = GetComponent<CharacterController>();
         root = GetComponent<PlayerRoot>();
     }
-
-    private void OnEnable()
-    {
-        if (root?.Survival != null)
-            root.Survival.OnDeath += Disable;
-    }
-
-    private void OnDisable()
-    {
-        if (root != null)
-            root.Survival.OnDeath -= Disable;
-    }
-
-    private void Disable() => enabled = false;
+    
 
     private void Update()
     {
