@@ -8,7 +8,8 @@ namespace _Project.Scripts.Gameplay.Player
     {
         private CharacterController _characterController;
         private PlayerRoot root;
-
+        private const float GroundedYVelocity = -2f;
+        private const float ExitWaterBoost = 2f;
 
         [Header("Ground Movement")] [SerializeField]
         private float moveSpeed = 5f;
@@ -20,9 +21,8 @@ namespace _Project.Scripts.Gameplay.Player
         [SerializeField] private float staminaRecoveryPerSecond = 5f;
 
 
-        [Header("Gravity & Jump")] [SerializeField]
-        private float gravity = -20f;
-
+        [Header("Gravity & Jump")] 
+        [SerializeField] private float gravity = -20f;
         [SerializeField] private float jumpForce = 7f;
 
 
@@ -32,7 +32,8 @@ namespace _Project.Scripts.Gameplay.Player
         [SerializeField] private float swimFloatDepth = 0.3f;
         [SerializeField] private float diveDamping = 3f;
         [SerializeField] private float diveSpeed = 3f;
-
+        [SerializeField] private float diveAccelerationMultiplier = 10f;
+        
 
         private float yVelocity;
         private Vector3 swimVelocity;
@@ -66,7 +67,7 @@ namespace _Project.Scripts.Gameplay.Player
 
             if (wasInWater && !inWater)
             {
-                yVelocity = Mathf.Max(yVelocity, 2f);
+                yVelocity = Mathf.Max(yVelocity, ExitWaterBoost);
             }
 
             wasInWater = inWater;
@@ -101,7 +102,7 @@ namespace _Project.Scripts.Gameplay.Player
             if (Mathf.Abs(vertInput) > 0.01f)
             {
 
-                yVelocity += vertInput * diveSpeed * Time.deltaTime * 10f;
+                yVelocity += vertInput * diveSpeed * Time.deltaTime * diveAccelerationMultiplier;
             }
             else
             {
@@ -130,7 +131,7 @@ namespace _Project.Scripts.Gameplay.Player
 
             if (_characterController.isGrounded)
             {
-                yVelocity = -2f;
+                yVelocity = GroundedYVelocity;
 
                 if (Input.GetKeyDown(KeyCode.Space))
                     yVelocity = jumpForce;
