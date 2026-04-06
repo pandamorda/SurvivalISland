@@ -37,9 +37,9 @@ public class PlayerInventory : MonoBehaviour
          return;
       }
 
-      if (item.resourceType == ResourceType.Food)
+      foreach (var effect in item.effects)
       {
-         root.Survival.AddHunger(item.value);
+         effect.Apply(root.Survival);
       }
       items[item]--;
       

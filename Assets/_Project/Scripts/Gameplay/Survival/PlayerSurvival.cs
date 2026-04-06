@@ -46,6 +46,11 @@ public class PlayerSurvival : MonoBehaviour
     {
         hunger.Increase(amount * Time.deltaTime);
     }
+
+    public void Heal(float amount)
+    {
+        health.Increase(amount * Time.deltaTime);
+    }
     public void HandleTemperature()
     {
         float temp = temperature.Current;
