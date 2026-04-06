@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+using _Project.Scripts.Gameplay.Player;
 using UnityEngine;
 
 public class PickableItem : MonoBehaviour, IInteractable

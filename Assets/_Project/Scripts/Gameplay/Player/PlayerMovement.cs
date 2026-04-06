@@ -1,164 +1,168 @@
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
-public class PlayerMovement : MonoBehaviour
+namespace _Project.Scripts.Gameplay.Player
 {
-    private CharacterController _characterController;
-    private PlayerRoot root;
 
-    
-    [Header("Ground Movement")]
-    [SerializeField] private float moveSpeed   = 5f;
-    [SerializeField] private float sprintSpeed = 10f;
-    [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
-
-    [Header("Stamina")]
-    [SerializeField] private float staminaCostPerSecond     = 10f;
-    [SerializeField] private float staminaRecoveryPerSecond = 5f;
-
-    
-    [Header("Gravity & Jump")]
-    [SerializeField] private float gravity   = -20f;
-    [SerializeField] private float jumpForce = 7f;
-
-   
-    [Header("Swimming")]
-    [SerializeField] private float swimSpeed          = 4f;
-    [SerializeField] private float swimAcceleration   = 4f;   
-    [SerializeField] private float swimBuoyancySmooth = 5f;   
-    [SerializeField] private float swimFloatDepth     = 0.3f; 
-    [SerializeField] private float diveDamping        = 3f;   
-    [SerializeField] private float diveSpeed          = 3f;   
-
-   
-    private float   yVelocity;
-    private Vector3 swimVelocity;
-    private bool    wasInWater;
-
-
-
-    private void Awake()
+    [RequireComponent(typeof(CharacterController))]
+    public class PlayerMovement : MonoBehaviour
     {
-        _characterController = GetComponent<CharacterController>();
-        root = GetComponent<PlayerRoot>();
-    }
-    
+        private CharacterController _characterController;
+        private PlayerRoot root;
 
-    private void Update()
-    {
-        HandleWaterTransition();
 
-        if (root.Water.InWater)
-            UpdateSwimming();
-        else
-            UpdateGroundMovement();
-    }
+        [Header("Ground Movement")] [SerializeField]
+        private float moveSpeed = 5f;
 
-   
+        [SerializeField] private float sprintSpeed = 10f;
+        [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
 
-    private void HandleWaterTransition()
-    {
-        bool inWater = root.Water.InWater;
+        [Header("Stamina")] [SerializeField] private float staminaCostPerSecond = 10f;
+        [SerializeField] private float staminaRecoveryPerSecond = 5f;
 
-       
-        if (wasInWater && !inWater)
+
+        [Header("Gravity & Jump")] [SerializeField]
+        private float gravity = -20f;
+
+        [SerializeField] private float jumpForce = 7f;
+
+
+        [Header("Swimming")] [SerializeField] private float swimSpeed = 4f;
+        [SerializeField] private float swimAcceleration = 4f;
+        [SerializeField] private float swimBuoyancySmooth = 5f;
+        [SerializeField] private float swimFloatDepth = 0.3f;
+        [SerializeField] private float diveDamping = 3f;
+        [SerializeField] private float diveSpeed = 3f;
+
+
+        private float yVelocity;
+        private Vector3 swimVelocity;
+        private bool wasInWater;
+
+
+
+        private void Awake()
         {
-            yVelocity = Mathf.Max(yVelocity, 2f);
+            _characterController = GetComponent<CharacterController>();
+            root = GetComponent<PlayerRoot>();
         }
 
-        wasInWater = inWater;
-    }
 
-  
-
-    private void UpdateSwimming()
-    {
-        
-        float moveX = Input.GetAxis("Horizontal");
-        float moveZ = Input.GetAxis("Vertical");
-
-        Vector3 inputDir = Vector3.ClampMagnitude(
-            transform.right * moveX + transform.forward * moveZ, 1f);
-
-        Vector3 targetHorizontal = inputDir * swimSpeed;
-
-        
-        swimVelocity = Vector3.Lerp(swimVelocity, targetHorizontal, Time.deltaTime * swimAcceleration);
-
-        
-        float targetSurfaceY = root.Water.WaterSurfaceY - swimFloatDepth;
-        float currentY       = transform.position.y;
-        float depthOffset    = targetSurfaceY - currentY; 
-
-       
-        float vertInput = 0f;
-        if (Input.GetKey(KeyCode.Space))      vertInput =  1f;
-        if (Input.GetKey(KeyCode.LeftControl)) vertInput = -1f;
-
-        if (Mathf.Abs(vertInput) > 0.01f)
+        private void Update()
         {
-          
-            yVelocity += vertInput * diveSpeed * Time.deltaTime * 10f;
-        }
-        else
-        {
-            
-            float buoyancyForce = depthOffset * swimBuoyancySmooth;
-            yVelocity += buoyancyForce * Time.deltaTime;
+            HandleWaterTransition();
+
+            if (root.Water.InWater)
+                UpdateSwimming();
+            else
+                UpdateGroundMovement();
         }
 
-       
-        yVelocity -= yVelocity * diveDamping * Time.deltaTime;
-        yVelocity  = Mathf.Clamp(yVelocity, -diveSpeed, diveSpeed);
 
-        
-        Vector3 finalVelocity = swimVelocity;
-        finalVelocity.y = yVelocity;
 
-        _characterController.Move(finalVelocity * Time.deltaTime);
-    }
-
-   
-    private void UpdateGroundMovement()
-    {
-        
-        swimVelocity = Vector3.zero;
-
-        
-        if (_characterController.isGrounded)
+        private void HandleWaterTransition()
         {
-            yVelocity = -2f; 
+            bool inWater = root.Water.InWater;
 
-            if (Input.GetKeyDown(KeyCode.Space))
-                yVelocity = jumpForce;
-        }
-        else
-        {
-            yVelocity += gravity * Time.deltaTime;
+
+            if (wasInWater && !inWater)
+            {
+                yVelocity = Mathf.Max(yVelocity, 2f);
+            }
+
+            wasInWater = inWater;
         }
 
-        
-        float moveX = Input.GetAxis("Horizontal");
-        float moveZ = Input.GetAxis("Vertical");
 
-        float currentSpeed;
-        float staminaCost = staminaCostPerSecond * Time.deltaTime;
 
-        if (Input.GetKey(sprintKey) && root.Survival.HasStamina(staminaCost))
+        private void UpdateSwimming()
         {
-            currentSpeed = sprintSpeed;
-            root.Survival.ConsumeStamina(staminaCost);
+
+            float moveX = Input.GetAxis("Horizontal");
+            float moveZ = Input.GetAxis("Vertical");
+
+            Vector3 inputDir = Vector3.ClampMagnitude(
+                transform.right * moveX + transform.forward * moveZ, 1f);
+
+            Vector3 targetHorizontal = inputDir * swimSpeed;
+
+
+            swimVelocity = Vector3.Lerp(swimVelocity, targetHorizontal, Time.deltaTime * swimAcceleration);
+
+
+            float targetSurfaceY = root.Water.WaterSurfaceY - swimFloatDepth;
+            float currentY = transform.position.y;
+            float depthOffset = targetSurfaceY - currentY;
+
+
+            float vertInput = 0f;
+            if (Input.GetKey(KeyCode.Space)) vertInput = 1f;
+            if (Input.GetKey(KeyCode.LeftControl)) vertInput = -1f;
+
+            if (Mathf.Abs(vertInput) > 0.01f)
+            {
+
+                yVelocity += vertInput * diveSpeed * Time.deltaTime * 10f;
+            }
+            else
+            {
+
+                float buoyancyForce = depthOffset * swimBuoyancySmooth;
+                yVelocity += buoyancyForce * Time.deltaTime;
+            }
+
+
+            yVelocity -= yVelocity * diveDamping * Time.deltaTime;
+            yVelocity = Mathf.Clamp(yVelocity, -diveSpeed, diveSpeed);
+
+
+            Vector3 finalVelocity = swimVelocity;
+            finalVelocity.y = yVelocity;
+
+            _characterController.Move(finalVelocity * Time.deltaTime);
         }
-        else
+
+
+        private void UpdateGroundMovement()
         {
-            currentSpeed = moveSpeed;
-            root.Survival.RecoverStamina(staminaRecoveryPerSecond * Time.deltaTime);
+
+            swimVelocity = Vector3.zero;
+
+
+            if (_characterController.isGrounded)
+            {
+                yVelocity = -2f;
+
+                if (Input.GetKeyDown(KeyCode.Space))
+                    yVelocity = jumpForce;
+            }
+            else
+            {
+                yVelocity += gravity * Time.deltaTime;
+            }
+
+
+            float moveX = Input.GetAxis("Horizontal");
+            float moveZ = Input.GetAxis("Vertical");
+
+            float currentSpeed;
+            float staminaCost = staminaCostPerSecond * Time.deltaTime;
+
+            if (Input.GetKey(sprintKey) && root.Survival.HasStamina(staminaCost))
+            {
+                currentSpeed = sprintSpeed;
+                root.Survival.ConsumeStamina(staminaCost);
+            }
+            else
+            {
+                currentSpeed = moveSpeed;
+                root.Survival.RecoverStamina(staminaRecoveryPerSecond * Time.deltaTime);
+            }
+
+            Vector3 moveDir = Vector3.ClampMagnitude(
+                transform.right * moveX + transform.forward * moveZ, 1f) * currentSpeed;
+
+            moveDir.y = yVelocity;
+            _characterController.Move(moveDir * Time.deltaTime);
         }
-
-        Vector3 moveDir = Vector3.ClampMagnitude(
-            transform.right * moveX + transform.forward * moveZ, 1f) * currentSpeed;
-
-        moveDir.y = yVelocity;
-        _characterController.Move(moveDir * Time.deltaTime);
     }
 }

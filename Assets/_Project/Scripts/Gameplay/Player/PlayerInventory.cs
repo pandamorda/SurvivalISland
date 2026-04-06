@@ -1,7 +1,8 @@
-using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+
+namespace _Project.Scripts.Gameplay.Player
+{
 
 public class PlayerInventory : MonoBehaviour
 {
@@ -47,4 +48,5 @@ public class PlayerInventory : MonoBehaviour
          items.Remove(item);
       }
    }
+}
 }

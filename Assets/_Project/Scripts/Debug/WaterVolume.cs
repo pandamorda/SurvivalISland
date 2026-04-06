@@ -1,13 +1,13 @@
 using UnityEngine;
 
-/// <summary>
-/// Trigger-зона, що визначає об'єм води.
-/// Розмістіть collider так, щоб його верхня межа збігалась з поверхнею води.
-/// </summary>
+namespace _Project.Scripts.Gameplay.Player
+{
+    
+
 [RequireComponent(typeof(Collider))]
 public class WaterVolume : MonoBehaviour
 {
-    /// <summary>Базова Y-координата поверхні (верх об'єкта).</summary>
+    
     public float SurfaceY => transform.position.y + GetComponent<Collider>().bounds.extents.y;
 
     private void OnTriggerEnter(Collider other)
@@ -28,7 +28,7 @@ public class WaterVolume : MonoBehaviour
         }
     }
 
-    // Допоміжна візуалізація у редакторі
+   
     private void OnDrawGizmos()
     {
         Gizmos.color = new Color(0f, 0.5f, 1f, 0.25f);
@@ -38,4 +38,5 @@ public class WaterVolume : MonoBehaviour
         Gizmos.DrawLine(surfaceLine - Vector3.right * 2f, surfaceLine + Vector3.right * 2f);
         Gizmos.DrawLine(surfaceLine - Vector3.forward * 2f, surfaceLine + Vector3.forward * 2f);
     }
+}
 }

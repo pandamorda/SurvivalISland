@@ -1,4 +1,4 @@
-using System;
+using _Project.Scripts.Gameplay.Player;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Cursor = UnityEngine.Cursor;

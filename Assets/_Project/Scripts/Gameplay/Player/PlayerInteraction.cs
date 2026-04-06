@@ -1,49 +1,55 @@
 using UnityEngine;
 
-public class PlayerInteraction : MonoBehaviour
+namespace _Project.Scripts.Gameplay.Player
 {
-    [SerializeField] private float interactDistance = 3f;
-    [SerializeField] private Camera playerCamera;
-    [SerializeField] private KeyCode interactKey = KeyCode.E;
-    
-    private IInteractable current;
-    
-    
-    void UpdateFocus()
+
+    public class PlayerInteraction : MonoBehaviour
     {
-        Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
+        [SerializeField] private float interactDistance = 3f;
+        [SerializeField] private Camera playerCamera;
+        [SerializeField] private KeyCode interactKey = KeyCode.E;
 
-        if (Physics.Raycast(ray, out var hit, interactDistance))
+        private IInteractable current;
+
+
+        void UpdateFocus()
         {
-            if (hit.collider.TryGetComponent(out IInteractable interactable))
-            {
-                if (current != interactable)
-                {
-                    current?.OnLoseFocus();
-                    current = interactable;
-                    current?.OnFocus();
-                }
+            Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
 
-                return;
+            if (Physics.Raycast(ray, out var hit, interactDistance))
+            {
+                if (hit.collider.TryGetComponent(out IInteractable interactable))
+                {
+                    if (current != interactable)
+                    {
+                        current?.OnLoseFocus();
+                        current = interactable;
+                        current?.OnFocus();
+                    }
+
+                    return;
+                }
+            }
+
+            if (current != null)
+            {
+                current.OnLoseFocus();
+                current = null;
             }
         }
 
-        if (current != null)
+        void HandleInteractionInput()
         {
-            current.OnLoseFocus();
-            current = null;
+            if (Input.GetKeyDown(interactKey) && current != null)
+            {
+                current.Interact();
+            }
         }
-    }
-    void HandleInteractionInput()
-    {
-        if (Input.GetKeyDown(interactKey) && current != null)
+
+        void Update()
         {
-            current.Interact();
+            UpdateFocus();
+            HandleInteractionInput();
         }
-    }
-    void Update()
-    {
-        UpdateFocus();
-        HandleInteractionInput();
     }
 }
