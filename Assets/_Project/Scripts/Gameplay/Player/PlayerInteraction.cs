@@ -6,11 +6,16 @@ namespace _Project.Scripts.Gameplay.Player
     public class PlayerInteraction : MonoBehaviour
     {
         [SerializeField] private float interactDistance = 3f;
-        [SerializeField] private Camera playerCamera;
+        private Camera playerCamera;
         [SerializeField] private KeyCode interactKey = KeyCode.E;
 
         private IInteractable current;
 
+
+        private void Awake()
+        {
+            playerCamera = Camera.main;
+        }
 
         void UpdateFocus()
         {
