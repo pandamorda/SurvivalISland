@@ -10,7 +10,7 @@ namespace _Project.Scripts.Gameplay.Player.Movement
         private PlayerMovementConfig config;
         
         private float yVelocity;
-        
+        public void SetYVelocity(float value) => yVelocity = value;
         
         public AirbornedState(CharacterController characterController, Transform pos, PlayerRoot playerRoot, PlayerMovementConfig playerMovementConfig)
         {

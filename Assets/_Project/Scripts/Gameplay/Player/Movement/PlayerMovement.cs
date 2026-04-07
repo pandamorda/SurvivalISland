@@ -52,8 +52,14 @@ namespace _Project.Scripts.Gameplay.Player
         }
         private void SwitchState(IMovementState next)
         {
+            bool wasSwimming = currentState == swimmingState;
+    
             currentState.Exit();
             currentState = next;
+    
+            if (wasSwimming && next == airbornedState)
+                airbornedState.SetYVelocity(config.ExitWaterBoost);
+    
             currentState.Enter();
         }
         

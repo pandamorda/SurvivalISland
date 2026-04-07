@@ -43,10 +43,7 @@ namespace _Project.Scripts.Gameplay.Player.Movement
                 if (Input.GetKeyDown(KeyCode.Space))
                     yVelocity = config.JumpForce;
             }
-            else
-            {
-                yVelocity += config.Gravity * Time.deltaTime;
-            }
+           
 
 
             float moveX = Input.GetAxis("Horizontal");
