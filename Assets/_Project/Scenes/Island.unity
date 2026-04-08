@@ -363,7 +363,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 83496675059784916, guid: af3ced4d7aa58ec4ebb12a7925cdc982, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.0375252
+      value: -1.86306
       objectReference: {fileID: 0}
     - target: {fileID: 83496675059784916, guid: af3ced4d7aa58ec4ebb12a7925cdc982, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5622,7 +5622,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9363a88120931c41822e4c63195ef38, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.229745
+      value: -1.8195019
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9363a88120931c41822e4c63195ef38, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5630,19 +5630,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9363a88120931c41822e4c63195ef38, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99332064
+      value: 0.99318236
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9363a88120931c41822e4c63195ef38, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0021271147
+      value: -0.0019991007
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9363a88120931c41822e4c63195ef38, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.115084544
+      value: 0.116256125
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9363a88120931c41822e4c63195ef38, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.008073098
+      value: 0.008326025
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9363a88120931c41822e4c63195ef38, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -10317,19 +10317,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c66c3cad396d0e43a64c81d97123a61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  moveSpeed: 10
-  sprintSpeed: 8
-  sprintKey: 304
-  staminaCostPerSecond: 10
-  staminaRecoveryPerSecond: 5
-  gravity: -9.81
-  jumpForce: 3.5
-  swimSpeed: 4
-  swimAcceleration: 4
-  swimBuoyancySmooth: 5
-  swimFloatDepth: 0.3
-  diveDamping: 3
-  diveSpeed: 3
+  config:
+    moveSpeed: 5
+    sprintSpeed: 10
+    sprintKey: 304
+    staminaCostPerSecond: 10
+    staminaRecoveryPerSecond: 5
+    gravity: -20
+    jumpForce: 7
+    swimSpeed: 4
+    swimAcceleration: 4
+    swimBuoyancySmooth: 5
+    swimFloatDepth: 0.3
+    diveDamping: 3
+    diveSpeed: 3
+    diveAccelerationMultiplier: 10
+    groundedYVelocity: -2
+    exitWaterBoost: 2
 --- !u!114 &1538365602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10453,7 +10457,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteraction
   interactDistance: 3
-  playerCamera: {fileID: 330585548}
   interactKey: 101
 --- !u!114 &1538365610
 MonoBehaviour:
@@ -10479,12 +10482,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee2697423a28f14fade1bccfc9599ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerWater
-  waveHeight1: 0.2
-  waveFrequency1: 2
-  waveSpeed1: 1
-  waveHeight2: 0.1
-  waveFrequency2: 1.5
-  waveSpeed2: 1
 --- !u!1001 &1541555239
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13955,7 +13952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.ProbeVolume
   mode: 1
-  size: {x: 1490.5349, y: 125.966705, z: 2739.645}
+  size: {x: 600.5152, y: 125.966705, z: 629.7837}
   overrideRendererFilters: 0
   minRendererVolumeSize: 0.1
   objectLayerMask:
@@ -13995,7 +13992,7 @@ Transform:
   m_GameObject: {fileID: 2064468495}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 256.23755, y: 36.66686, z: 435.6825}
+  m_LocalPosition: {x: -188.77231, y: 36.66686, z: -619.24817}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
