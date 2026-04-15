@@ -3,47 +3,47 @@ using UnityEngine;
 
 public class Stat
 {
-    private float current;
-    private float max;
+    private float _current;
+    private float _max;
 
-    public float Current => current;
-    public float Max => max;
+    public float Current => _current;
+    public float Max => _max;
 
     
-    public bool IsEmpty => current <= 0f;
-    public bool IsFull => current >= max;
+    public bool IsEmpty => _current <= 0f;
+    public bool IsFull => _current >= _max;
     
     
     public Stat(float maxValue)
     {
-        max = Mathf.Max(0f, maxValue);
-        current = max;
+        _max = Mathf.Max(0f, maxValue);
+        _current = _max;
     }
 
     public Stat(float maxValue, float startValue)
     {
-        max = Mathf.Max(0f, maxValue);
-        current = startValue;
+        _max = Mathf.Max(0f, maxValue);
+        _current = startValue;
     }
 
     public void Increase(float value)
     {
-        current = Mathf.Clamp(current + value, 0f, max);
+        _current = Mathf.Clamp(_current + value, 0f, _max);
     }
 
     public void Decrease(float value)
     {
-        current = Mathf.Clamp(current - value, 0f, max);
+        _current = Mathf.Clamp(_current - value, 0f, _max);
         
     }
 
     public void Set(float value)
     {
-        current = Mathf.Clamp(value, 0f, max);
+        _current = Mathf.Clamp(value, 0f, _max);
     }
 
     public float Normalized()
     {
-        return max<=0f ? 0f : current / max;
+        return _max<=0f ? 0f : _current / _max;
     }
 }

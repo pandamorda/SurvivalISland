@@ -1,17 +1,21 @@
+using _Project.Scripts.Gameplay.Items;
 using _Project.Scripts.Gameplay.Player;
 using UnityEngine;
 
-public class PickableItem : MonoBehaviour, IInteractable
+namespace _Project.Scripts.Gameplay.Interaction
 {
-    [SerializeField] private ItemData itemName;
-    [SerializeField] private PlayerInventory inventory;
-    public void Interact()
+    public class PickableItem : MonoBehaviour, IInteractable
     {
-        inventory.AddItem(itemName);
-        Destroy(gameObject, 0.01f);
-    }
+        [SerializeField] private ItemData itemName;
+        [SerializeField] private PlayerInventory inventory;
+        public void Interact()
+        {
+            inventory.AddItem(itemName);
+            Destroy(gameObject, 0.01f);
+        }
     
 
-    public void OnFocus() { }
-    public void OnLoseFocus() { }
+        public void OnFocus() { }
+        public void OnLoseFocus() { }
+    }
 }

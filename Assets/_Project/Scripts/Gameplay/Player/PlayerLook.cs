@@ -9,7 +9,7 @@ namespace _Project.Scripts.Gameplay.Player
         [SerializeField, Range(10f, 500f)] private float sensitivity = 100f;
 
 
-        private float verticalRotation;
+        private float _verticalRotation;
 
 
         void Start()
@@ -25,10 +25,10 @@ namespace _Project.Scripts.Gameplay.Player
 
             transform.Rotate(Vector3.up * mouseX);
 
-            verticalRotation -= mouseY;
-            verticalRotation = Mathf.Clamp(verticalRotation, -80, 80);
+            _verticalRotation -= mouseY;
+            _verticalRotation = Mathf.Clamp(_verticalRotation, -80, 80);
 
-            viewPivot.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
+            viewPivot.localRotation = Quaternion.Euler(_verticalRotation, 0f, 0f);
 
         }
 

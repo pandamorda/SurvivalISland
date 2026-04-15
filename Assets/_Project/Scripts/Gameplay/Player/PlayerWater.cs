@@ -5,28 +5,28 @@ namespace _Project.Scripts.Gameplay.Player
     public class PlayerWater : MonoBehaviour
     {
        
-        private bool inWater;
+        private bool _inWater;
 
 
-        private float waterSurfaceY;
+        private float _waterSurfaceY;
 
-        public float WaterSurfaceY => waterSurfaceY;
+        public float WaterSurfaceY => _waterSurfaceY;
         
         
-        public bool InWater => inWater;
+        public bool InWater => _inWater;
 
        
 
         public void EnterWater(float surfaceY)
         {
-            inWater = true;
-            waterSurfaceY = surfaceY;
+            _inWater = true;
+            _waterSurfaceY = surfaceY;
             Debug.Log($"{gameObject.name} entered water at Y={surfaceY}");
         }
 
         public void ExitWater()
         {
-            inWater = false;
+            _inWater = false;
             Debug.Log($"{gameObject.name} exited water");
         }
     }

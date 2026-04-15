@@ -1,89 +1,94 @@
-using System; using UnityEngine; using UnityEngine.UIElements;
+using _Project.Scripts.Gameplay.Survival;
+using UnityEngine;
+using UnityEngine.UIElements;
 
-[RequireComponent(typeof(UIDocument))]
-public class SurvivalUI : MonoBehaviour
+namespace _Project.Scripts.UI
 {
-    [SerializeField] private PlayerSurvival playerSurvival; 
-    [SerializeField] private TimeSystem timeSystem;
-    
-    private UIDocument document; 
-    private VisualElement staminaFill; 
-    private VisualElement hungerFill;
-    private VisualElement healthFill;
-    private VisualElement temperatureFill;
-    
-    private Label dayCount;
-    private Label temperature;
-    private Label time;
-    
-    private VisualElement damageOverlay;
-    
-    private float damageFlash;
-
-    private void Awake()
+    [RequireComponent(typeof(UIDocument))]
+    public class SurvivalUI : MonoBehaviour
     {
-        document = GetComponent<UIDocument>();
-    } 
-    private void OnEnable() { 
-        var root = document.rootVisualElement; 
-        staminaFill = root.Q<VisualElement>("stamina-fill"); 
-        hungerFill = root.Q<VisualElement>("hunger-fill"); 
-        healthFill = root.Q<VisualElement>("health-fill");
-        temperatureFill = root.Q<VisualElement>("temperature-fill");
+        [SerializeField] private PlayerSurvival playerSurvival; 
+        [SerializeField] private TimeSystem timeSystem;
+    
+        private UIDocument _document; 
+        private VisualElement _staminaFill; 
+        private VisualElement _hungerFill;
+        private VisualElement _healthFill;
+        private VisualElement _temperatureFill;
+    
+        private Label _dayCount;
+        private Label _temperature;
+        private Label _time;
+    
+        private VisualElement _damageOverlay;
+    
+        private float _damageFlash;
 
-        dayCount = root.Q<Label>("day-count-label");
-        
-
-        damageOverlay = root.Q<VisualElement>("damage-overlay");
-        playerSurvival.OnDamage += OnDamageTaken;
-    }
-
-    private void OnDisable()
-    {
-        playerSurvival.OnDamage -= OnDamageTaken;
-    }
-
-    private void Update()
-    {
-        if (playerSurvival == null || staminaFill == null || hungerFill == null || healthFill == null)
+        private void Awake()
         {
-            return;
+            _document = GetComponent<UIDocument>();
         } 
-        float staminaValue = playerSurvival.StaminaNormalized() * 100f; 
-        float hungerValue = playerSurvival.HungerNormalized() * 100f;
-        float healthValue = playerSurvival.HealthNormalized() * 100f;
-        float tempNormalized = playerSurvival.TemperatureNormalized();
-        
-        temperatureFill.style.backgroundColor = GetTemperatureColor(tempNormalized);
-        staminaFill.style.width = Length.Percent(staminaValue); 
-        hungerFill.style.width = Length.Percent(hungerValue);
-        healthFill.style.width = Length.Percent(healthValue);
+        private void OnEnable() { 
+            var root = _document.rootVisualElement; 
+            _staminaFill = root.Q<VisualElement>("stamina-fill"); 
+            _hungerFill = root.Q<VisualElement>("hunger-fill"); 
+            _healthFill = root.Q<VisualElement>("health-fill");
+            _temperatureFill = root.Q<VisualElement>("temperature-fill");
 
-        dayCount.text = "Day " + timeSystem.DayCount.ToString();
+            _dayCount = root.Q<Label>("day-count-label");
         
-        
-        damageFlash -= Time.deltaTime * 2f;
-        damageFlash = Mathf.Clamp01(damageFlash);
-        
-        if (damageOverlay != null)
-        {
-             damageOverlay.style.opacity = damageFlash * damageFlash;
+
+            _damageOverlay = root.Q<VisualElement>("damage-overlay");
+            playerSurvival.OnDamage += OnDamageTaken;
         }
+
+        private void OnDisable()
+        {
+            playerSurvival.OnDamage -= OnDamageTaken;
+        }
+
+        private void Update()
+        {
+            if (playerSurvival == null || _staminaFill == null || _hungerFill == null || _healthFill == null)
+            {
+                return;
+            } 
+            float staminaValue = playerSurvival.StaminaNormalized() * 100f; 
+            float hungerValue = playerSurvival.HungerNormalized() * 100f;
+            float healthValue = playerSurvival.HealthNormalized() * 100f;
+            float tempNormalized = playerSurvival.TemperatureNormalized();
+        
+            _temperatureFill.style.backgroundColor = GetTemperatureColor(tempNormalized);
+            _staminaFill.style.width = Length.Percent(staminaValue); 
+            _hungerFill.style.width = Length.Percent(hungerValue);
+            _healthFill.style.width = Length.Percent(healthValue);
+
+            _dayCount.text = "Day " + timeSystem.DayCount.ToString();
+        
+        
+            _damageFlash -= Time.deltaTime * 2f;
+            _damageFlash = Mathf.Clamp01(_damageFlash);
+        
+            if (_damageOverlay != null)
+            {
+                _damageOverlay.style.opacity = _damageFlash * _damageFlash;
+            }
        
-    }
-    Color GetTemperatureColor(float normalized)
-    {
-        if (normalized < 0.5f)
-        {
-            return Color.Lerp(Color.blue, Color.green, normalized * 2f);
         }
-        else
+        Color GetTemperatureColor(float normalized)
         {
-            return Color.Lerp(Color.green, Color.red, (normalized - 0.5f) * 2f);
+            if (normalized < 0.5f)
+            {
+                return Color.Lerp(Color.blue, Color.green, normalized * 2f);
+            }
+            else
+            {
+                return Color.Lerp(Color.green, Color.red, (normalized - 0.5f) * 2f);
+            }
         }
-    }
-    private void OnDamageTaken()
-    {
-        damageFlash = 1f;
+        private void OnDamageTaken()
+        {
+            _damageFlash = 1f;
+        }
     }
 }

@@ -1,60 +1,63 @@
-using System;
+using _Project.Scripts.Gameplay.Survival;
 using UnityEngine;
-using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
-[RequireComponent(typeof(UIDocument))]
-public class GameOverUI : MonoBehaviour
+namespace _Project.Scripts.UI
 {
-    [SerializeField] private PlayerSurvival playerSurvival;
-    private UIDocument document;
-    private VisualElement panel;
-    private Button restartButton;
-
-    private void Awake()
+    [RequireComponent(typeof(UIDocument))]
+    public class GameOverUI : MonoBehaviour
     {
-        
-        document = GetComponent<UIDocument>();
-    }
+        [SerializeField] private PlayerSurvival playerSurvival;
+        private UIDocument _document;
+        private VisualElement _panel;
+        private Button _restartButton;
 
-    void OnEnable()
-    {
-        var root = document.rootVisualElement;
+        private void Awake()
+        {
+        
+            _document = GetComponent<UIDocument>();
+        }
 
-        panel = root.Q<VisualElement>("game-over-panel");
-        panel.pickingMode = PickingMode.Position;
+        void OnEnable()
+        {
+            var root = _document.rootVisualElement;
 
-        restartButton = panel.Q<Button>("restart-button");
+            _panel = root.Q<VisualElement>("game-over-panel");
+            _panel.pickingMode = PickingMode.Position;
+
+            _restartButton = _panel.Q<Button>("restart-button");
         
-        restartButton.style.width = 200;
-        restartButton.style.height = 60;
+            _restartButton.style.width = 200;
+            _restartButton.style.height = 60;
         
-        panel.style.display = DisplayStyle.None;
+            _panel.style.display = DisplayStyle.None;
         
-        restartButton.clicked += RestartGame;
+            _restartButton.clicked += RestartGame;
         
-        if (playerSurvival != null)
-            playerSurvival.OnDeath += Show;
+            if (playerSurvival != null)
+                playerSurvival.OnDeath += Show;
        
-    }
+        }
 
-    public void RestartGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        public void RestartGame()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         
-    }
-    private void OnDisable()
-    {
-        if (restartButton != null)
-            restartButton.clicked -= RestartGame;
+        }
+        private void OnDisable()
+        {
+            if (_restartButton != null)
+                _restartButton.clicked -= RestartGame;
 
-        if (playerSurvival != null)
-            playerSurvival.OnDeath -= Show;
-    }
+            if (playerSurvival != null)
+                playerSurvival.OnDeath -= Show;
+        }
 
-    void Show()
-    {
-        panel.style.display = DisplayStyle.Flex;
+        void Show()
+        {
+            _panel.style.display = DisplayStyle.Flex;
+        }
     }
 }
 

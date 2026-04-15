@@ -1,15 +1,18 @@
 using _Project.Scripts.Gameplay.Items.Effects;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
-public class ItemData : ScriptableObject
+namespace _Project.Scripts.Gameplay.Items
 {
-   public string itemName;
-   public Sprite icon;
-   [TextArea]public string description;
+   [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
+   public class ItemData : ScriptableObject
+   {
+      public string itemName;
+      public Sprite icon;
+      [TextArea]public string description;
 
-   public ItemEffect[] effects;
+      public ItemEffect[] effects;
 
 
 
+   }
 }

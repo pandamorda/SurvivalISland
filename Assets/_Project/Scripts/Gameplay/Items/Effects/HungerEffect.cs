@@ -1,3 +1,4 @@
+using _Project.Scripts.Gameplay.Survival;
 using UnityEngine;
 
 namespace _Project.Scripts.Gameplay.Items.Effects

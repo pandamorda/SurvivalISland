@@ -1,6 +1,7 @@
 #if UNITY_EDITOR
 
 using System;
+using _Project.Scripts.Gameplay.Survival;
 using UnityEngine;
 
 public class TakeDamage : MonoBehaviour

@@ -5,31 +5,31 @@ namespace _Project.Scripts.Gameplay.Player
 
     public class PlayerDeathHandler : MonoBehaviour
     {
-         private PlayerRoot  root;
+         private PlayerRoot  _root;
         
          private void Awake()
          {
-             root = GetComponent<PlayerRoot>();
+             _root = GetComponent<PlayerRoot>();
          }
         private void OnEnable()
         {
-            if (root != null)
-                root.Survival.OnDeath += OnPlayerDeath;
+            if (_root != null)
+                _root.Survival.OnDeath += OnPlayerDeath;
         }
 
         private void OnDisable()
         {
-            if (root != null)
-                root.Survival.OnDeath -= OnPlayerDeath;
+            if (_root != null)
+                _root.Survival.OnDeath -= OnPlayerDeath;
         }
 
         private void OnPlayerDeath()
         {
-            if (root != null)
+            if (_root != null)
             {
-                root.Movement.enabled = false;
-                root.Look.enabled = false;
-                root.Interaction.enabled = false;
+                _root.Movement.enabled = false;
+                _root.Look.enabled = false;
+                _root.Interaction.enabled = false;
             }
                 
 

@@ -6,48 +6,48 @@ namespace _Project.Scripts.Gameplay.Player
     public class PlayerInteraction : MonoBehaviour
     {
         [SerializeField] private float interactDistance = 3f;
-        private Camera playerCamera;
+        private Camera _playerCamera;
         [SerializeField] private KeyCode interactKey = KeyCode.E;
 
-        private IInteractable current;
+        private IInteractable _current;
 
 
         private void Awake()
         {
-            playerCamera = Camera.main;
+            _playerCamera = Camera.main;
         }
 
         void UpdateFocus()
         {
-            Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
+            Ray ray = _playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
 
             if (Physics.Raycast(ray, out var hit, interactDistance))
             {
                 if (hit.collider.TryGetComponent(out IInteractable interactable))
                 {
-                    if (current != interactable)
+                    if (_current != interactable)
                     {
-                        current?.OnLoseFocus();
-                        current = interactable;
-                        current?.OnFocus();
+                        _current?.OnLoseFocus();
+                        _current = interactable;
+                        _current?.OnFocus();
                     }
 
                     return;
                 }
             }
 
-            if (current != null)
+            if (_current != null)
             {
-                current.OnLoseFocus();
-                current = null;
+                _current.OnLoseFocus();
+                _current = null;
             }
         }
 
         void HandleInteractionInput()
         {
-            if (Input.GetKeyDown(interactKey) && current != null)
+            if (Input.GetKeyDown(interactKey) && _current != null)
             {
-                current.Interact();
+                _current.Interact();
             }
         }
 

@@ -1,29 +1,32 @@
 using UnityEngine;
 
-public class TestInteractable : MonoBehaviour, IInteractable
+namespace _Project.Scripts.Gameplay.Interaction
 {
-   [SerializeField] private Renderer renderer;
-   private Color color;
-   private bool isFocused;
+   public class TestInteractable : MonoBehaviour, IInteractable
+   {
+      [SerializeField] private new Renderer renderer;
+      private Color _color;
+      private bool _isFocused;
    
-   public void Interact()
-   {
-      Debug.Log("Interact");
-   }
-   public void OnFocus()
-   {
-      if(isFocused) return;
+      public void Interact()
+      {
+         Debug.Log("Interact");
+      }
+      public void OnFocus()
+      {
+         if(_isFocused) return;
       
-      color = renderer.material.color;
-      renderer.material.color = Color.yellow;
-      isFocused = true;
-   }
+         _color = renderer.material.color;
+         renderer.material.color = Color.yellow;
+         _isFocused = true;
+      }
 
-   public void OnLoseFocus()
-   {
-      if(!isFocused) return;
+      public void OnLoseFocus()
+      {
+         if(!_isFocused) return;
       
-      renderer.material.color = color;
-      isFocused = false;
+         renderer.material.color = _color;
+         _isFocused = false;
+      }
    }
 }
