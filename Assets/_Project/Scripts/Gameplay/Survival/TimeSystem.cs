@@ -30,27 +30,22 @@ namespace _Project.Scripts.Gameplay.Survival
 
         [Header("Time")]
         [SerializeField] private float dayDuration = 120f;
-
+        
         private float _time = 0f;
         private int _dayCount = 0;
+        private int hours;
+        private int minutes;
 
         public float TimeNormalized => _time;
         public int DayCount => _dayCount;
+        public int Hours => hours;
+        public int Minutes => minutes;
 
         private void Awake()
         {
             _sunHd = sun.GetComponent<HDAdditionalLightData>();
             _moonHd = moon.GetComponent<HDAdditionalLightData>();
-        
-            if (globalVolume.profile.TryGet(out _sky))
-            {
-                Debug.Log("HDRI Sky found");
-            }
-
-            if (globalVolume.profile.TryGet(out _exposure))
-            {
-                Debug.Log("Exposure found");
-            }
+            
         }
 
         private void Update()
@@ -61,6 +56,7 @@ namespace _Project.Scripts.Gameplay.Survival
             UpdateMoon();
             UpdateSky();
             UpdateExposure();
+            UpdateTime();
 
             if (_time >= 1f)
             {
@@ -69,6 +65,12 @@ namespace _Project.Scripts.Gameplay.Survival
             }
         }
 
+        private void UpdateTime()
+        {
+            float totalHours = TimeNormalized * 24f;
+            hours   = (int)totalHours;
+            minutes = (int)((totalHours - hours) * 60f);
+        }
    
         private void UpdateSun()
         {

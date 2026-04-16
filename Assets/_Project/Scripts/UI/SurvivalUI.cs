@@ -36,7 +36,7 @@ namespace _Project.Scripts.UI
             _temperatureFill = root.Q<VisualElement>("temperature-fill");
 
             _dayCount = root.Q<Label>("day-count-label");
-        
+            _time = root.Q<Label>("time-label");
 
             _damageOverlay = root.Q<VisualElement>("damage-overlay");
             playerSurvival.OnDamage += OnDamageTaken;
@@ -64,7 +64,7 @@ namespace _Project.Scripts.UI
             _healthFill.style.width = Length.Percent(healthValue);
 
             _dayCount.text = "Day " + timeSystem.DayCount.ToString();
-        
+            _time.text = $"{timeSystem.Hours:00}:{timeSystem.Minutes:00}";
         
             _damageFlash -= Time.deltaTime * 2f;
             _damageFlash = Mathf.Clamp01(_damageFlash);
