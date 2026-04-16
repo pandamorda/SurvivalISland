@@ -27,11 +27,13 @@ public class InventoryUI : MonoBehaviour
         overlay = rootUI.Q<VisualElement>("inventory-overlay");
         
         CloseMenu();
-
+        
+    }
+    void Start()
+    {
         if (root != null && root.Survival != null)
             root.Survival.OnDeath += Disable;
     }
-
     private void OnDisable()
     {
         if (root != null)
@@ -41,7 +43,7 @@ public class InventoryUI : MonoBehaviour
     void Disable()
     {
         CloseMenu(); 
-        enabled = false;
+        gameObject.SetActive(false);
     }
     private void Update()
     {
@@ -66,6 +68,11 @@ public class InventoryUI : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         
+        HidePanels();
+    }
+    void HidePanels()
+    {
+        if (panel == null) return;
         overlay.style.display = DisplayStyle.None;
         panel.style.display = DisplayStyle.None;
     }

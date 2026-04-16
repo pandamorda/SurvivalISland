@@ -363,7 +363,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 83496675059784916, guid: af3ced4d7aa58ec4ebb12a7925cdc982, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.5086193
+      value: -2.1539354
       objectReference: {fileID: 0}
     - target: {fileID: 83496675059784916, guid: af3ced4d7aa58ec4ebb12a7925cdc982, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1662,7 +1662,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraShake
   cameraTransform: {fileID: 330585546}
   duration: 0.2
-  strength: 0.5
+  strength: 0.2
 --- !u!1001 &338195267
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1868,13 +1868,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 362545523}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08436484, y: -0, z: -0, w: 0.9964349}
-  m_LocalPosition: {x: -0.324, y: 0.18, z: 0.187}
+  m_LocalRotation: {x: 0.048724744, y: -0.81344634, z: 0.0688718, w: 0.575489}
+  m_LocalPosition: {x: 1.01, y: 0, z: 2.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 330585546}
-  m_Father: {fileID: 1538365604}
+  m_Father: {fileID: 1709728175}
   m_LocalEulerAnglesHint: {x: 9.679, y: 0, z: 0}
 --- !u!1001 &366149777
 PrefabInstance:
@@ -5686,7 +5686,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9363a88120931c41822e4c63195ef38, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.9202595
+      value: -1.7723808
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9363a88120931c41822e4c63195ef38, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5694,19 +5694,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9363a88120931c41822e4c63195ef38, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9924743
+      value: 0.99212253
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9363a88120931c41822e4c63195ef38, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.008284596
+      value: -0.010874341
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9363a88120931c41822e4c63195ef38, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.12194695
+      value: 0.12467351
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9363a88120931c41822e4c63195ef38, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0074239094
+      value: -0.005588964
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9363a88120931c41822e4c63195ef38, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -10408,7 +10408,6 @@ GameObject:
   - component: {fileID: 1538365605}
   - component: {fileID: 1538365606}
   - component: {fileID: 1538365607}
-  - component: {fileID: 1538365608}
   - component: {fileID: 1538365609}
   - component: {fileID: 1538365610}
   - component: {fileID: 1538365611}
@@ -10512,7 +10511,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 362545524}
   - {fileID: 1709728175}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 42.324, z: 0}
@@ -10528,7 +10526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 219aa85d3415ce1468b01df235c0e8e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSurvival
-  timeSystem: {fileID: 0}
+  timeSystem: {fileID: 1037779981}
   damagePerSecond: 5
   coldDamagePerSecond: 0
   minComfortTemperature: 15
@@ -10558,20 +10556,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb7620004fee744ca6ad85f5df3f7bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Gameplay.Player.PlayerDeathHandler
---- !u!114 &1538365608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1538365599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fe6dbaf077d9c94d84f95d9f931d043, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CameraShakeHandler
-  playerSurvival: {fileID: 1538365605}
-  cameraShake: {fileID: 330585550}
 --- !u!114 &1538365609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11586,13 +11570,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1709728174}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.8163568, z: -0, w: 0.577548}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 362545524}
   m_Father: {fileID: 1538365604}
-  m_LocalEulerAnglesHint: {x: 0, y: 109.443, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &1709728176
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -14236,7 +14221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.ProbeVolume
   mode: 1
-  size: {x: 600.5152, y: 122.30315, z: 629.78394}
+  size: {x: 600.5152, y: 122.30315, z: 629.7837}
   overrideRendererFilters: 0
   minRendererVolumeSize: 0.1
   objectLayerMask:

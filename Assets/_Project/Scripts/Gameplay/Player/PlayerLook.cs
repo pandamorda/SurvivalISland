@@ -10,14 +10,28 @@ namespace _Project.Scripts.Gameplay.Player
 
 
         private float _verticalRotation;
+        private PlayerRoot _root;
 
-
+        void Awake()
+        {
+            _root = GetComponent<PlayerRoot>();
+        }
         void Start()
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            if (_root?.Survival != null)
+                _root.Survival.OnDeath += OnDeath;
         }
-
+        private void OnDisable()
+        {
+            if (_root?.Survival != null)
+                _root.Survival.OnDeath -= OnDeath;
+        }
+        private void OnDeath()
+        {
+            enabled = false;
+        }
         void LateUpdate()
         {
             float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;

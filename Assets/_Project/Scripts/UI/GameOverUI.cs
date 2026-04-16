@@ -2,6 +2,8 @@ using _Project.Scripts.Gameplay.Survival;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using System.Collections;
+using Cursor = UnityEngine.Cursor;
 
 namespace _Project.Scripts.UI
 {
@@ -53,10 +55,18 @@ namespace _Project.Scripts.UI
             if (playerSurvival != null)
                 playerSurvival.OnDeath -= Show;
         }
-
+        
         void Show()
         {
             _panel.style.display = DisplayStyle.Flex;
+            StartCoroutine(UnlockCursor());
+        }
+
+        private IEnumerator UnlockCursor()
+        {
+            yield return null; 
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 }
