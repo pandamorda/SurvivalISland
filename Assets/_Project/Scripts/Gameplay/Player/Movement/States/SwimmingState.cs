@@ -2,42 +2,29 @@ using UnityEngine;
 
 namespace _Project.Scripts.Gameplay.Player.Movement
 {
-    public class SwimmingState : IMovementState
+    public class SwimmingState : MovementStateBase
     {
-        private CharacterController characterController;
-        private Transform position;
-        private PlayerRoot root;
-        private PlayerMovementConfig config;
-        
+       
         private float yVelocity;
         private Vector3 swimVelocity;
         
-        public SwimmingState(CharacterController characterController, Transform pos, PlayerRoot playerRoot, PlayerMovementConfig playerMovementConfig)
+        public SwimmingState(CharacterController characterController, 
+            Transform pos, 
+            PlayerRoot playerRoot,
+            PlayerMovementConfig playerMovementConfig)
+            :base(characterController, pos, playerRoot, playerMovementConfig)
         {
-            this.characterController = characterController;
-            this.position = pos;
-            this.root = playerRoot;
-            this.config = playerMovementConfig;
+            
             
         }
         
-        public void Enter()
-        {
-            
-        }
+        
 
-        public void Exit()
+        public override void Update()
         {
-            
-        }
+            Vector2 move = ReadMoveInput();
 
-        public void Update()
-        {
-            float moveX = Input.GetAxis("Horizontal");
-            float moveZ = Input.GetAxis("Vertical");
-
-            Vector3 inputDir = Vector3.ClampMagnitude(
-                position.right * moveX + position.forward * moveZ, 1f);
+            Vector3 inputDir = GetPlanarMoveDirection(move);
 
             Vector3 targetHorizontal = inputDir * config.SwimSpeed;
 
@@ -74,7 +61,7 @@ namespace _Project.Scripts.Gameplay.Player.Movement
             Vector3 finalVelocity = swimVelocity;
             finalVelocity.y = yVelocity;
 
-            characterController.Move(finalVelocity * Time.deltaTime);
+            ApplyMove(finalVelocity);
         }
     }
 }

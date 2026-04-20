@@ -2,48 +2,34 @@ using UnityEngine;
 
 namespace _Project.Scripts.Gameplay.Player.Movement
 {
-    public class AirbornedState : IMovementState
+    public class AirbornedState : MovementStateBase
     {
-        private CharacterController characterController;
-        private Transform position;
-        private PlayerRoot root;
-        private PlayerMovementConfig config;
         
         private float yVelocity;
         public void SetYVelocity(float value) => yVelocity = value;
         
-        public AirbornedState(CharacterController characterController, Transform pos, PlayerRoot playerRoot, PlayerMovementConfig playerMovementConfig)
+        public AirbornedState(CharacterController characterController, 
+            Transform pos,
+            PlayerRoot playerRoot, 
+            PlayerMovementConfig playerMovementConfig)
+            :base(characterController, pos, playerRoot, playerMovementConfig)
         {
-            this.characterController = characterController;
-            this.position = pos;
-            this.root = playerRoot;
-            this.config = playerMovementConfig;
-            
+           
         }
-        public void Exit()
-        {
-            
-        }
+       
 
-        public void Enter()
-        {
-            
-        }
-
-        public void Update()
+        public override void Update()
         {
             
             yVelocity += config.Gravity * Time.deltaTime;
 
 
-            float moveX = Input.GetAxis("Horizontal");
-            float moveZ = Input.GetAxis("Vertical");
+            Vector2 move = ReadMoveInput();
 
-            Vector3 moveDir = Vector3.ClampMagnitude(
-                position.right * moveX + position.forward * moveZ, 1f) * config.MoveSpeed;
+            Vector3 moveDir = GetPlanarMoveDirection(move) * config.MoveSpeed;
 
             moveDir.y = yVelocity;
-            characterController.Move(moveDir * Time.deltaTime);
+            ApplyMove(moveDir);
         }
     }
 }

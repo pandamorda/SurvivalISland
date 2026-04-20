@@ -3,35 +3,25 @@ using UnityEngine;
 
 namespace _Project.Scripts.Gameplay.Player.Movement
 {
-    public class GroundedState : IMovementState
+    public class GroundedState : MovementStateBase
     {
-        private CharacterController characterController;
-        private Transform position;
-        private PlayerRoot root;
-        private PlayerMovementConfig config;
+       
         
         private float yVelocity;
-        
-        
-        public GroundedState(CharacterController characterController, Transform pos, PlayerRoot playerRoot, PlayerMovementConfig playerMovementConfig)
-        {
-            this.characterController = characterController;
-            this.position = pos;
-            this.root = playerRoot;
-            this.config = playerMovementConfig;
-            
-        }
+        public float YVelocity => yVelocity;
 
-        public void Enter()
+        public GroundedState(
+            CharacterController characterController, 
+            Transform pos, 
+            PlayerRoot playerRoot, 
+            PlayerMovementConfig playerMovementConfig)
+            : base(characterController, pos, playerRoot, playerMovementConfig)
         {
             
         }
 
-        public void Exit()
-        {
-            
-        }
-        public void Update()
+       
+        public override void Update()
         {
             
 
@@ -43,11 +33,10 @@ namespace _Project.Scripts.Gameplay.Player.Movement
                 if (Input.GetKeyDown(KeyCode.Space))
                     yVelocity = config.JumpForce;
             }
-           
 
 
-            float moveX = Input.GetAxis("Horizontal");
-            float moveZ = Input.GetAxis("Vertical");
+
+            Vector2 move = ReadMoveInput();
 
             float currentSpeed;
             float staminaCost = config.StaminaCostPerSecond * Time.deltaTime;
@@ -63,11 +52,10 @@ namespace _Project.Scripts.Gameplay.Player.Movement
                 root.Survival.RecoverStamina(config.StaminaRecoveryPerSecond * Time.deltaTime);
             }
 
-            Vector3 moveDir = Vector3.ClampMagnitude(
-                position.right * moveX + position.forward * moveZ, 1f) * currentSpeed;
+            Vector3 moveDir = GetPlanarMoveDirection(move) * currentSpeed;
 
             moveDir.y = yVelocity;
-            characterController.Move(moveDir * Time.deltaTime);
+            ApplyMove(moveDir);
         }
     }
 }

@@ -363,7 +363,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 83496675059784916, guid: af3ced4d7aa58ec4ebb12a7925cdc982, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.1539354
+      value: -1.8704166
       objectReference: {fileID: 0}
     - target: {fileID: 83496675059784916, guid: af3ced4d7aa58ec4ebb12a7925cdc982, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5686,7 +5686,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9363a88120931c41822e4c63195ef38, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.7723808
+      value: -1.8119259
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9363a88120931c41822e4c63195ef38, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5694,19 +5694,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9363a88120931c41822e4c63195ef38, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99212253
+      value: 0.99290335
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9363a88120931c41822e4c63195ef38, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.010874341
+      value: 0.0021105704
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9363a88120931c41822e4c63195ef38, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.12467351
+      value: 0.11866308
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9363a88120931c41822e4c63195ef38, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.005588964
+      value: -0.0075908285
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9363a88120931c41822e4c63195ef38, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -14221,7 +14221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.ProbeVolume
   mode: 1
-  size: {x: 600.5152, y: 122.30315, z: 629.7837}
+  size: {x: 600.5152, y: 122.30315, z: 629.78394}
   overrideRendererFilters: 0
   minRendererVolumeSize: 0.1
   objectLayerMask:
