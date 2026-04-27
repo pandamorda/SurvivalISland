@@ -24,10 +24,10 @@ namespace _Project.Scripts.Gameplay.Player
         {
             _characterController = GetComponent<CharacterController>();
             root = GetComponent<PlayerRoot>();
-            
-            groundedState = new GroundedState(_characterController, transform, root, config);
-            swimmingState = new SwimmingState(_characterController, transform, root, config);
-            airbornedState = new AirbornedState(_characterController, transform, root, config);
+            IInputService input = new UnityInputService(config);
+            groundedState = new GroundedState(_characterController, transform, root, config, input);
+            swimmingState = new SwimmingState(_characterController, transform, root, config, input);
+            airbornedState = new AirbornedState(_characterController, transform, root, config, input);
             
             currentState = groundedState;
             currentState.Enter();

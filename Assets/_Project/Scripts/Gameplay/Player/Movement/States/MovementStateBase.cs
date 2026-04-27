@@ -8,14 +8,15 @@ namespace _Project.Scripts.Gameplay.Player.Movement
         protected readonly Transform position;
         protected readonly PlayerRoot root;
         protected readonly PlayerMovementConfig config;
-
-        protected MovementStateBase(CharacterController characterController, Transform pos, PlayerRoot playerRoot, PlayerMovementConfig playerMovementConfig)
+        protected readonly IInputService input;
+        protected MovementStateBase(CharacterController characterController, Transform pos, PlayerRoot playerRoot, PlayerMovementConfig playerMovementConfig, IInputService iInputService)
         {
             this.characterController = characterController;
             this.position = pos;
             this.root = playerRoot;
             this.config = playerMovementConfig;
-            
+            this.input = iInputService;
+
         }
         public virtual void Enter()
         {
@@ -31,9 +32,7 @@ namespace _Project.Scripts.Gameplay.Player.Movement
 
         protected Vector2 ReadMoveInput()
         {
-            float moveX = Input.GetAxis("Horizontal");
-            float moveZ = Input.GetAxis("Vertical");
-            return new Vector2(moveX, moveZ);
+            return input.MoveInput;
         }
 
         protected Vector3 GetPlanarMoveDirection(Vector2 input)

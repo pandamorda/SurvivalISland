@@ -11,8 +11,9 @@ namespace _Project.Scripts.Gameplay.Player.Movement
         public AirbornedState(CharacterController characterController, 
             Transform pos,
             PlayerRoot playerRoot, 
-            PlayerMovementConfig playerMovementConfig)
-            :base(characterController, pos, playerRoot, playerMovementConfig)
+            PlayerMovementConfig playerMovementConfig, 
+            IInputService iInputService)
+            :base(characterController, pos, playerRoot, playerMovementConfig, iInputService)
         {
            
         }
