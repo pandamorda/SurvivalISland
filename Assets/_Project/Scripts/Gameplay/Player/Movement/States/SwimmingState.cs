@@ -38,8 +38,8 @@ namespace _Project.Scripts.Gameplay.Player.Movement
 
 
             float vertInput = 0f;
-            if (Input.GetKey(KeyCode.Space)) vertInput = 1f;
-            if (Input.GetKey(KeyCode.LeftControl)) vertInput = -1f;
+            if (input.JumpHeld) vertInput = 1f;
+            if (input.DiveHeld) vertInput = -1f;
 
             if (Mathf.Abs(vertInput) > 0.01f)
             {

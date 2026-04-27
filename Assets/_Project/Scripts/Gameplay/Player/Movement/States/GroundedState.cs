@@ -31,7 +31,7 @@ namespace _Project.Scripts.Gameplay.Player.Movement
             {
                 yVelocity = config.GroundedYVelocity;
 
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (input.JumpPressed)
                     yVelocity = config.JumpForce;
             }
 
@@ -42,7 +42,7 @@ namespace _Project.Scripts.Gameplay.Player.Movement
             float currentSpeed;
             float staminaCost = config.StaminaCostPerSecond * Time.deltaTime;
 
-            if (Input.GetKey(config.SprintKey) && root.Survival.HasStamina(staminaCost))
+            if (input.SprintHeld && root.Survival.HasStamina(staminaCost))
             {
                 currentSpeed = config.SprintSpeed;
                 root.Survival.ConsumeStamina(staminaCost);
