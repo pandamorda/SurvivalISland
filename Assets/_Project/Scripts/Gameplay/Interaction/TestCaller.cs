@@ -4,7 +4,7 @@ namespace _Project.Scripts.Gameplay.Interaction
 {
     public class TestCaller : MonoBehaviour
     {
-        [SerializeField] private DummyInteractable target;
+        [SerializeField] private InteractableBase target;
 
         private void Update()
         {
