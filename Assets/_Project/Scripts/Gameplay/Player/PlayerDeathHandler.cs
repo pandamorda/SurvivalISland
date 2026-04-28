@@ -29,7 +29,7 @@ namespace _Project.Scripts.Gameplay.Player
             {
                 _root.Movement.enabled = false;
                 _root.Look.enabled = false;
-                _root.Interaction.enabled = false;
+                //_root.Interaction.enabled = false;
             }
                 
 

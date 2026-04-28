@@ -9,7 +9,7 @@ namespace _Project.Scripts.Gameplay.Player
         public PlayerMovement Movement { get; private set; }
         public PlayerLook Look { get; private set; }
         public PlayerSurvival Survival { get; private set; }
-        public PlayerInteraction Interaction { get; private set; }
+       // public PlayerInteraction Interaction { get; private set; }
         public PlayerInventory Inventory { get; private set; }
         public PlayerWater Water { get; private set; }
 
@@ -18,7 +18,7 @@ namespace _Project.Scripts.Gameplay.Player
             Movement = GetComponent<PlayerMovement>();
             Look = GetComponent<PlayerLook>();
             Survival = GetComponent<PlayerSurvival>();
-            Interaction = GetComponent<PlayerInteraction>();
+            //Interaction = GetComponent<PlayerInteraction>();
             Inventory = GetComponent<PlayerInventory>();
             Water = GetComponent<PlayerWater>();
         }

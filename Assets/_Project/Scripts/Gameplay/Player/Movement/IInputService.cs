@@ -10,7 +10,10 @@ namespace _Project.Scripts.Gameplay.Player.Movement
         bool SprintHeld{ get; }
         bool DiveHeld{ get; }
 
-
+        
+        bool InteractPressed { get; }
+        bool InteractHeld { get; }
+        bool InteractReleased { get; }
     }
 
 }

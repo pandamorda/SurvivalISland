@@ -1,6 +1,5 @@
-using UnityEngine;
-
-namespace _Project.Scripts.Gameplay.Player
+/*using UnityEngine;
+namespace _Project.Scripts.Gameplay.Interaction
 {
 
     public class PlayerInteraction : MonoBehaviour
@@ -47,7 +46,7 @@ namespace _Project.Scripts.Gameplay.Player
         {
             if (Input.GetKeyDown(interactKey) && _current != null)
             {
-                _current.Interact();
+                _current.StartInteract();
             }
         }
 
@@ -57,4 +56,4 @@ namespace _Project.Scripts.Gameplay.Player
             HandleInteractionInput();
         }
     }
-}
+}*/
