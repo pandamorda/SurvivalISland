@@ -8,5 +8,6 @@ namespace _Project.Scripts.Gameplay.Interaction
         void StartInteract();
         void StopInteract();
         void Tick(float deltaTime);
+        InteractKey Key { get; }
     }
 }

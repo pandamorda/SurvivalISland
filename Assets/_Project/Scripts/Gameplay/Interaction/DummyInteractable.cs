@@ -4,7 +4,8 @@ namespace _Project.Scripts.Gameplay.Interaction
     public class DummyInteractable : MonoBehaviour, IInteractable
     {
         public bool CanInteract => true;
-
+        [SerializeField] private InteractKey key;
+        public InteractKey Key => key;
         public void Focus()
         {
             Debug.Log($"[{name}] Focus");

@@ -1,9 +1,11 @@
+using _Project.Scripts.Gameplay.Interaction;
 using UnityEngine;
 
 namespace _Project.Scripts.Gameplay.Player.Movement
 {
     public interface IInputService
     {
+        
         Vector2 MoveInput { get; }
         bool JumpPressed{ get; }
         bool JumpHeld{ get; }
@@ -11,9 +13,9 @@ namespace _Project.Scripts.Gameplay.Player.Movement
         bool DiveHeld{ get; }
 
         
-        bool InteractPressed { get; }
-        bool InteractHeld { get; }
-        bool InteractReleased { get; }
+        bool IsPressed(InteractKey key);
+        bool IsHeld(InteractKey key);
+        bool IsReleased(InteractKey key);
     }
 
 }
