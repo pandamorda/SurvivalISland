@@ -1,4 +1,5 @@
 using _Project.Scripts.Gameplay.Interaction;
+using _Project.Scripts.Gameplay.Interaction.Player;
 using UnityEngine;
 
 
@@ -6,7 +7,7 @@ public class RaycastTargetDetector : MonoBehaviour, ITargetDetector
 {
    
 
-    IInteractable FindCurrentTarget()
+    public IInteractable FindCurrentTarget()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit))
