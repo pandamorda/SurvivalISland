@@ -1,23 +1,25 @@
-using _Project.Scripts.Gameplay.Interaction;
-using _Project.Scripts.Gameplay.Interaction.Player;
 using UnityEngine;
 
-
-public class RaycastTargetDetector : MonoBehaviour, ITargetDetector
+namespace _Project.Scripts.Gameplay.Interaction.Player
 {
-   
-
-    public IInteractable FindCurrentTarget()
+    public class RaycastTargetDetector : MonoBehaviour, ITargetDetector
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit))
+        [SerializeField] private float _interactDistance = 10f;
+        [SerializeField] private LayerMask _layer;
+        [SerializeField] private Camera _camera;
+        public IInteractable FindCurrentTarget()
         {
-            if (hit.collider.TryGetComponent<IInteractable>(out IInteractable inter))
+            Ray ray = new Ray(GetComponent<Camera>().transform.position, GetComponent<Camera>().transform.forward);
+            if (Physics.Raycast(ray, out RaycastHit hit, _interactDistance, _layer))
             {
-                return inter;
+                if (hit.collider.TryGetComponent<IInteractable>(out IInteractable inter))
+                {
+                    return inter;
+                }
             }
+    
+            return null;
         }
-
-        return null;
     }
 }
+
