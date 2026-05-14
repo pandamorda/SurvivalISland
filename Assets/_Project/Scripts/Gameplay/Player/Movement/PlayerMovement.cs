@@ -11,7 +11,8 @@ namespace _Project.Scripts.Gameplay.Player
         private GroundedState groundedState;
         private SwimmingState swimmingState;
         private AirbornedState airbornedState;
-        
+
+        public IInputService input { get; private set; }
         private CharacterController _characterController;
         private PlayerRoot root;
         
@@ -24,7 +25,7 @@ namespace _Project.Scripts.Gameplay.Player
         {
             _characterController = GetComponent<CharacterController>();
             root = GetComponent<PlayerRoot>();
-            IInputService input = new UnityInputService(config);
+            input = new UnityInputService(config);
             groundedState = new GroundedState(_characterController, transform, root, config, input);
             swimmingState = new SwimmingState(_characterController, transform, root, config, input);
             airbornedState = new AirbornedState(_characterController, transform, root, config, input);

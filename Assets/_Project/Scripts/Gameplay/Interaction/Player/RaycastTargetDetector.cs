@@ -9,7 +9,7 @@ namespace _Project.Scripts.Gameplay.Interaction.Player
         [SerializeField] private Camera _camera;
         public IInteractable FindCurrentTarget()
         {
-            Ray ray = new Ray(GetComponent<Camera>().transform.position, GetComponent<Camera>().transform.forward);
+            Ray ray = new Ray(_camera.transform.position, _camera.transform.forward);
             if (Physics.Raycast(ray, out RaycastHit hit, _interactDistance, _layer))
             {
                 if (hit.collider.TryGetComponent<IInteractable>(out IInteractable inter))
