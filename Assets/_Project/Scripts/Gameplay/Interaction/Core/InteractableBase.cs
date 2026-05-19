@@ -1,3 +1,4 @@
+using _Project.Scripts.Gameplay.Interaction.Behaviors;
 using UnityEngine;
 namespace _Project.Scripts.Gameplay.Interaction
 {
@@ -5,6 +6,7 @@ namespace _Project.Scripts.Gameplay.Interaction
     {
         public bool CanInteract => true;
         [SerializeField] private InteractKey key;
+        [SerializeReference, SubclassSelector] private IExtractionBehavior behavior;
         public InteractKey Key => key;
         private Color originalColor;
         [SerializeField] private Color focusColor = Color.green;
@@ -17,27 +19,33 @@ namespace _Project.Scripts.Gameplay.Interaction
 
         public void Focus()
         {
+            if (this == null || _renderer == null) return;
             _renderer.material.color = focusColor;
         }
 
         public void Unfocus()
         {
+            if (this == null || _renderer == null) return;
             _renderer.material.color = originalColor;
         }
 
         public void StartInteract()
         {
-            Debug.Log("Interact");
+            behavior.Begin(this);
         }
 
         public void StopInteract()
         {
-
+            behavior.OnInputReleased(this);
         }
 
         public void Tick(float deltaTime)
         {
-
+            ExtractionTickResult result = behavior.Tick(deltaTime);
+            if (result.Status == ExtractionStatus.Completed)
+            {
+                behavior.Complete(this);
+            }
         }
     }
 }
