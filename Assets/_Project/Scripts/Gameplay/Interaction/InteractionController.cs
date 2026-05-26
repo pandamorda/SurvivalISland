@@ -10,8 +10,7 @@ namespace _Project.Scripts.Gameplay.Interaction.Player
         private ITargetDetector _detector;
         private IInputService _input;
         private IInteractable _current;
-
-
+        
         void Start()
         {
             _detector = detectorComponent as ITargetDetector;
