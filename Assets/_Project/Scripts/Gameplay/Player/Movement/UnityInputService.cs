@@ -23,9 +23,9 @@ namespace _Project.Scripts.Gameplay.Player.Movement{
         
         private KeyCode KeyFor(InteractKey key) => key switch
         {
-            InteractKey.Chop   => KeyCode.Mouse0,
+            InteractKey.Chop   => KeyCode.E,
             InteractKey.Open   => KeyCode.E,
-            InteractKey.Pickup => KeyCode.F,
+            InteractKey.Pickup => KeyCode.E,
         };
         
     }
