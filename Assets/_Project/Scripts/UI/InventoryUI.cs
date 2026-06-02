@@ -31,13 +31,22 @@ public class InventoryUI : MonoBehaviour
     }
     void Start()
     {
-        if (root != null && root.Survival != null)
+        if (root == null) return;
+    
+        if (root.Survival != null)
             root.Survival.OnDeath += Disable;
+    
+        if (root.Inventory != null)
+            root.Inventory.OnChanged += Refresh;
     }
     private void OnDisable()
     {
         if (root != null)
+        {
             root.Survival.OnDeath -= Disable;
+            root.Inventory.OnChanged -= Refresh;
+        }
+            
     }
 
     void Disable()
