@@ -1,4 +1,6 @@
 using System;
+using _Project.Scripts.Gameplay.Items;
+using _Project.Scripts.Gameplay.Player;
 using UnityEngine;
 
 
@@ -7,6 +9,7 @@ namespace _Project.Scripts.Gameplay.Interaction.Behaviors
     [Serializable]
     public class ChopBehavior : IExtractionBehavior
     {
+        [SerializeField] private ItemData reward;
         private int _currentHits;
         [SerializeField] private int maxHits = 5;
         public void OnInputReleased(InteractableBase host)
@@ -33,6 +36,8 @@ namespace _Project.Scripts.Gameplay.Interaction.Behaviors
 
         public void Complete(InteractableBase host)
         {
+            if (PlayerInventory.Instance != null)
+                PlayerInventory.Instance.AddItem(reward);
             UnityEngine.Object.Destroy(host.gameObject);
         }
     }

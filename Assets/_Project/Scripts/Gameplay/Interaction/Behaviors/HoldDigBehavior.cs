@@ -1,11 +1,15 @@
 using UnityEngine;
 using System;
+using _Project.Scripts.Gameplay.Items;
+using _Project.Scripts.Gameplay.Player;
+
 namespace _Project.Scripts.Gameplay.Interaction.Behaviors
 {
 
     [Serializable]
     public class HoldDigBehavior : IExtractionBehavior
     {
+        [SerializeField] private ItemData reward;
         [SerializeField] private float duration = 2f;
         [SerializeField] private bool resetOnRelease = true;
         private float _elapsed;
@@ -35,6 +39,8 @@ namespace _Project.Scripts.Gameplay.Interaction.Behaviors
 
         public void Complete(InteractableBase host)
         {
+            if (PlayerInventory.Instance != null)
+                PlayerInventory.Instance.AddItem(reward);
             _elapsed = 0f;
             UnityEngine.Object.Destroy(host.gameObject);
         }
