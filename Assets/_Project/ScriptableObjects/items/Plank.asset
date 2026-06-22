@@ -13,9 +13,6 @@ MonoBehaviour:
   m_Name: Plank
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Plank
-  icon: {fileID: 0}
-  resourceType: 2
+  icon: {fileID: 21300000, guid: 6892236a3010d17478073ca4dd13e5b4, type: 3}
   description: 
-  effectType: 0
-  value: 0
-  isPositive: 0
+  effects: []

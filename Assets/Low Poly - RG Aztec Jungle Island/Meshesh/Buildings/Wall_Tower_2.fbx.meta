@@ -1,39 +1,39 @@
 fileFormatVersion: 2
 guid: 1837e75f97dfe4449a1499f4bcec7dd4
 ModelImporter:
-  serializedVersion: 21202
+  serializedVersion: 21300
   internalIDToNameTable: []
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Blue
-    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Ground
-    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Stone_1
-    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Stone_1_2
-    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Stone_2
-    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Wood_5
-    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -129,6 +129,7 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

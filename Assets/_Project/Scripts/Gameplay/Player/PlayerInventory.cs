@@ -34,7 +34,17 @@ public class PlayerInventory : MonoBehaviour
       OnChanged?.Invoke();
    }
 
-  
+   public void RemoveItem(ItemData item, int count)
+   {
+      if(item == null) return;
+      if(!items.ContainsKey(item)) return;
+      items[item] -= count;
+      if (items[item] <= 0)
+      {
+         items.Remove(item);
+      }
+      OnChanged?.Invoke();
+   }
 
    public void UseItem(ItemData item)
    {

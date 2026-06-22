@@ -14,6 +14,7 @@ public class InventoryUI : MonoBehaviour
     private VisualElement itemsContainer;
     private VisualElement overlay;
     
+    
     [SerializeField] private KeyCode openInventoryKey = KeyCode.Tab;
     private bool isOpen;
     
@@ -25,7 +26,6 @@ public class InventoryUI : MonoBehaviour
         panel = rootUI.Q<VisualElement>("inventory-panel");
         itemsContainer =rootUI.Q<VisualElement>("items-container");
         overlay = rootUI.Q<VisualElement>("inventory-overlay");
-        
         CloseMenu();
         
     }
@@ -45,6 +45,7 @@ public class InventoryUI : MonoBehaviour
         {
             root.Survival.OnDeath -= Disable;
             root.Inventory.OnChanged -= Refresh;
+            
         }
             
     }

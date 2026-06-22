@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 623f0b0a9ae54969acd9c0218df2cb3b, type: 3}
+  m_Name: New Recipe Data
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Gameplay.Crafting.RecipeData
+  inputs:
+  - item: {fileID: 11400000, guid: 731ffb9e6cb819a449d8a8f9b0c89e55, type: 2}
+    count: 0
+  - item: {fileID: 11400000, guid: 462db24c9c86c33489acf1b73a0d07d1, type: 2}
+    count: 0
+  output:
+    item: {fileID: 0}
+    count: 0

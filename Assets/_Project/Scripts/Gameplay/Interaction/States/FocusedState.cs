@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace _Project.Scripts.Gameplay.Interaction.States
 {
     public class FocusedState : IInteractionState

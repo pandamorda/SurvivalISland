@@ -1,14 +1,14 @@
 fileFormatVersion: 2
 guid: 97d4ac8bc2dc4d44e8b24fef2e28aec8
 ModelImporter:
-  serializedVersion: 21202
+  serializedVersion: 21300
   internalIDToNameTable: []
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Collor Material Aztec
-    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -104,6 +104,7 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

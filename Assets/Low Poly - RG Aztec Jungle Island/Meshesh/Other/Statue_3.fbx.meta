@@ -1,74 +1,74 @@
 fileFormatVersion: 2
 guid: 79d96e9b6826fa04b9df721299188287
 ModelImporter:
-  serializedVersion: 21202
+  serializedVersion: 21300
   internalIDToNameTable: []
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Blue.002
-    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Gold_1.002
-    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Jade_2.002
-    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Red.001
-    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Stone_3.002
-    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Stone_4.001
-    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Stone_5.003
-    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Stone_8
-    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Stone_8.009
-    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: White
-    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Wood_2.001
-    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Wood_4
-    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Wood_4.003
-    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -164,6 +164,7 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

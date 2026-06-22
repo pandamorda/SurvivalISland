@@ -1,54 +1,54 @@
 fileFormatVersion: 2
 guid: f1a40394b3b973348a52dd7bc3d305d3
 ModelImporter:
-  serializedVersion: 21202
+  serializedVersion: 21300
   internalIDToNameTable: []
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Blue
-    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Fether White
-    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Jade2
-    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Red
-    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Teth
-    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Wood_1
-    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Wood_2
-    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Wood_3
-    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Yellow
-    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -144,6 +144,7 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

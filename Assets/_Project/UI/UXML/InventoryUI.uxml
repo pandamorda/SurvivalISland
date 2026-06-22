@@ -1,10 +1,58 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/_Project/UI/USS/InventoryUI.uss?fileID=7433441132597879392&amp;guid=a1f527721ff26ad4eabbf4dff86b3ffb&amp;type=3#InventoryUI"/>
     <ui:VisualElement name="root">
-        <ui:VisualElement name="inventory-overlay"/>
-        <ui:VisualElement name="inventory-panel">
-            <ui:Label text="Inventory" class="inventory-title"/>
-            <ui:VisualElement name="items-container" class="items-grid"/>
+        <ui:VisualElement name="inventory-overlay">
+            <ui:VisualElement name="main-panel">
+                <ui:VisualElement name="inventory-panel">
+                    <ui:Label text="Inventory" class="panel-title"/>
+                    <ui:VisualElement name="items-container" class="items-grid"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="craft-panel">
+                    <ui:Label text="Crafting" class="panel-title"/>
+                    <ui:VisualElement name="craft-result-panel" class="craft-content">
+                        <ui:VisualElement name="craft-panel" class="craft-left">
+                            <ui:Label text="Ingredients" class="small-title"/>
+                            <ui:VisualElement name="craft-grid" class="craft-grid">
+                                <ui:VisualElement name="craft-slot-0" class="craft-slot"/>
+                                <ui:VisualElement name="craft-slot-1" class="craft-slot"/>
+                                <ui:VisualElement name="craft-slot-2" class="craft-slot"/>
+                                <ui:VisualElement name="craft-slot-3" class="craft-slot"/>
+                            </ui:VisualElement>
+                            <ui:Button name="craft-button" text="Craft" class="craft-button"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="craft-result-block">
+                            <ui:Label text="Result" class="small-title"/>
+                            <ui:VisualElement name="craft-result-slot" class="result-slot"/>
+                            <ui:Label name="craft-result-name" text="Select recipe" class="result-name"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="recipes-block">
+                        <ui:Label text="Recipes" class="small-title"/>
+                        <ui:ScrollView name="recipes-scroll" class="recipes-scroll">
+                            <ui:VisualElement class="recipe-card">
+                                <ui:Label text="Plastic Platform" class="recipe-title"/>
+                                <ui:Label text="Plastic Bottle + Tape + Scrap" class="recipe-description"/>
+                            </ui:VisualElement>
+                            <ui:VisualElement class="recipe-card">
+                                <ui:Label text="Wooden Box" class="recipe-title"/>
+                                <ui:Label text="Wood + Nails + Rope" class="recipe-description"/>
+                            </ui:VisualElement>
+                            <ui:VisualElement class="recipe-card">
+                                <ui:Label text="Water Filter" class="recipe-title"/>
+                                <ui:Label text="Bottle + Coal + Cloth + Sand" class="recipe-description"/>
+                            </ui:VisualElement>
+                            <ui:VisualElement class="recipe-card">
+                                <ui:Label text="Bandage" class="recipe-title"/>
+                                <ui:Label text="Cloth + Alcohol" class="recipe-description"/>
+                            </ui:VisualElement>
+                            <ui:VisualElement class="recipe-card">
+                                <ui:Label text="Torch" class="recipe-title"/>
+                                <ui:Label text="Stick + Cloth + Oil" class="recipe-description"/>
+                            </ui:VisualElement>
+                        </ui:ScrollView>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
