@@ -27,6 +27,8 @@ namespace _Project.Scripts.Gameplay.Interaction
         void Awake()
         {
             var renderers = GetComponentsInChildren<Renderer>(true);
+           
+           
             foreach (var r in renderers)
             {
                 if (r == null) continue;
@@ -37,8 +39,17 @@ namespace _Project.Scripts.Gameplay.Interaction
                 originalColors.Add(r.material.GetColor(propId));
             }
     
+          
             _machine = new InteractionStateMachine(this);
         }
+
+        /*private List<Renderer> GetRenderers(GameObject gameObject)
+        {
+            foreach (var )
+            {
+                
+            }
+        }*/
         public void Focus() => _machine.Current.OnFocus(this);
         public void Unfocus() => _machine.Current.OnUnfocus(this);
         public void StartInteract() => _machine.Current.OnStartInteract(this);
@@ -47,8 +58,10 @@ namespace _Project.Scripts.Gameplay.Interaction
         public void TransitionTo(InteractionStateKind kind) => _machine.TransitionTo(kind);
         public void ApplyFocusedVisual()
         {
+            Debug.Log("Works");
             for (int i = 0; i < _renderers.Count; i++)
             {
+                Debug.Log(_renderers[i]);
                 _renderers[i].material.SetColor(_colorPropertyIds[i], focusColor);
             }
             if (_progressBar != null) _progressBar.Show();
@@ -56,6 +69,7 @@ namespace _Project.Scripts.Gameplay.Interaction
 
         public void ApplyUnfocusedVisual()
         {
+            
             for (int i = 0; i < _renderers.Count; i++)
             {
                 _renderers[i].material.SetColor(_colorPropertyIds[i], originalColors[i]);

@@ -1,7 +1,7 @@
 using _Project.Scripts.Gameplay.Player;
 using _Project.Scripts.Gameplay.Player.Movement;
 using UnityEngine;
-using UnityEditor;
+using _Project.Scripts.Gameplay.Placement;
 
 namespace _Project.Scripts.Gameplay.Interaction.Player
 {
@@ -20,6 +20,7 @@ namespace _Project.Scripts.Gameplay.Interaction.Player
 
         void Update()
         {
+            if (PlacementController.Instance != null && PlacementController.Instance.IsPlacing) return;
             IInteractable next = _detector.FindCurrentTarget();
             if (next != _current)
             {

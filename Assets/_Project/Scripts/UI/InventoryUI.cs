@@ -1,4 +1,5 @@
 using _Project.Scripts.Gameplay.Items;
+using _Project.Scripts.Gameplay.Placement;
 using _Project.Scripts.Gameplay.Player;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -128,14 +129,24 @@ public class InventoryUI : MonoBehaviour
             var slot = CreateSlot(itemKey, itemCount);
             itemsContainer.Add(slot);
             
-            slot.RegisterCallback<ClickEvent>(evt =>
-            {
-                root.Inventory.UseItem(itemKey);
-                Refresh();
-            }
-                
-                );
+            slot.RegisterCallback<ClickEvent>(evt => HandleItemClick(itemKey));
         }
         
+    }
+
+    void HandleItemClick(ItemData item)
+    {
+        if (item.placementPrefab != null)
+        {
+            CloseMenu();
+            isOpen = false;
+            if(PlacementController.Instance != null)
+                PlacementController.Instance.BeginPlacement(item);
+            
+        }
+        else
+        {
+            root.Inventory.UseItem(item);
+        }
     }
 }

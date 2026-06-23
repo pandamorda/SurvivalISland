@@ -11,6 +11,7 @@ namespace _Project.Scripts.Gameplay.Items
       [TextArea]public string description;
 
       public ItemEffect[] effects;
+      public GameObject placementPrefab;
 
 
 
