@@ -72,7 +72,11 @@ namespace _Project.Scripts.Gameplay.Interaction
             
             for (int i = 0; i < _renderers.Count; i++)
             {
-                _renderers[i].material.SetColor(_colorPropertyIds[i], originalColors[i]);
+                if (_renderers[i] != null)
+                {
+                     _renderers[i].material.SetColor(_colorPropertyIds[i], originalColors[i]);
+                }
+               
             }
             if (_progressBar != null) _progressBar.Hide();
         }

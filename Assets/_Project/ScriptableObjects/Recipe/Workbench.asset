@@ -13,10 +13,8 @@ MonoBehaviour:
   m_Name: Workbench
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Gameplay.Crafting.RecipeData
   inputs:
-  - item: {fileID: 11400000, guid: 7557fa59fe1e04e4faa0d089dbca4fed, type: 2}
-    count: 5
-  - item: {fileID: 11400000, guid: 7557fa59fe1e04e4faa0d089dbca4fed, type: 2}
-    count: 5
+  - item: {fileID: 11400000, guid: c059827e9cb348f48978263b8f3a5b46, type: 2}
+    count: 1
   output:
     item: {fileID: 11400000, guid: c19e4742372a8e44cbdb201022c66683, type: 2}
-    count: 0
+    count: 1

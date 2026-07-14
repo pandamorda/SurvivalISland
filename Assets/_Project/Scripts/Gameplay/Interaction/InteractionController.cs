@@ -47,7 +47,7 @@ namespace _Project.Scripts.Gameplay.Interaction.Player
             if (_current == null) return;
 
             InteractKey key = _current.Key;
-
+            
             if (_input.IsPressed(key)) _current.StartInteract();
             if (_input.IsReleased(key)) _current.StopInteract();
 

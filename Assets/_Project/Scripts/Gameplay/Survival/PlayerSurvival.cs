@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace _Project.Scripts.Gameplay.Survival
@@ -8,6 +9,7 @@ namespace _Project.Scripts.Gameplay.Survival
         private Stat _stamina;
         private Stat _hunger;
         private Stat _temperature;
+        private Stat _thirst;
     
     
         private bool _isDead;
@@ -17,8 +19,8 @@ namespace _Project.Scripts.Gameplay.Survival
         [SerializeField] private float coldDamagePerSecond;
         [SerializeField] private float minComfortTemperature = 15f;
         [SerializeField] private float maxComfortTemperature = 35f;
-        public event System.Action OnDeath;
-        public event System.Action OnDamage;
+        public event Action OnDeath;
+        public event Action OnDamage;
 
         public float StaminaNormalized() => _stamina.Normalized();
         public float HungerNormalized() => _hunger.Normalized();
@@ -30,6 +32,7 @@ namespace _Project.Scripts.Gameplay.Survival
             _health = new Stat(100);
             _stamina = new Stat(100);
             _hunger = new Stat(100);
+            _thirst = new Stat(100);
             _temperature = new Stat(50, 20);
         
         }
@@ -70,21 +73,28 @@ namespace _Project.Scripts.Gameplay.Survival
         
         }
 
-        public void HandleHungry()
+        public void HandleConsume()
         {
             float dt = Time.deltaTime;
             _hunger.Decrease(dt);
+            _thirst.Decrease(dt*2f);
                                            
             if (_hunger.Current <= 0f)
             {
                 TakeDamage(damagePerSecond * dt);
             }
+
+            if (_thirst.Current <= 0f)
+            {
+                TakeDamage(damagePerSecond * dt);
+            }
         }
+         
         private void Update()
         {
         
             HandleTemperature();
-            HandleHungry();
+            HandleConsume();
 
         }
     
