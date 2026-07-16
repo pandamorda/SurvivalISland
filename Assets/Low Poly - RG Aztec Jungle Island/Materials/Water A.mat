@@ -25,8 +25,7 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
-  m_InvalidKeywords:
-  - _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -103,7 +102,7 @@ Material:
     - Vector1_3C2CF0EB: 0.0118
     - Vector1_53B9698E: 2.6
     - Vector1_6D9DC178: 90.26
-    - Vector1_93DCFAA9: 9.91
+    - Vector1_93DCFAA9: 9.69
     - Vector1_95BBCBE0: 215.91
     - Vector1_C5543ECF: 1.55
     - Vector1_E23798DE: 0.11

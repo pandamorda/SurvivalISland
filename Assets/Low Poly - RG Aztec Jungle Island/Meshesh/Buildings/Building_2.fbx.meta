@@ -1,64 +1,64 @@
 fileFormatVersion: 2
 guid: 84b5eba2f394b2f4d9ae9fa599f0dd0a
 ModelImporter:
-  serializedVersion: 21300
+  serializedVersion: 21202
   internalIDToNameTable: []
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Blue
-    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
+    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Ground
-    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
+    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Red
-    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
+    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Red_1
-    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
+    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Stairs
-    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
+    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Stone_1
-    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
+    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Stone_2
-    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
+    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Stone_3
-    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
+    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Stone_5
-    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
+    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Wall
-    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
+    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Wood_5
-    second: {fileID: 2100000, guid: 5ec10e140506fd94493f80affdebeeff, type: 2}
+    second: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -154,7 +154,6 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
-  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

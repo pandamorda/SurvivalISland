@@ -13,6 +13,8 @@ namespace _Project.Scripts.Gameplay.Placement
         [SerializeField] private LayerMask _blockingLayers;
         [SerializeField]private Material _validMaterial;
         [SerializeField]private Material _invalidMaterial;
+        [SerializeField] private float _gridSize = 1f;
+        [SerializeField] private KeyCode _snapKey = KeyCode.LeftShift;
         
         public static PlacementController  Instance { get; private set; }
         private ItemData _currentItem;
@@ -44,9 +46,9 @@ namespace _Project.Scripts.Gameplay.Placement
             if (Physics.Raycast(ray, out RaycastHit hit, _maxDistance, _placementLayers))
             {
                
-                _ghostInstance.transform.position = hit.point;
+                _ghostInstance.transform.position =  Input.GetKey(_snapKey) ? SnapToGrid(hit.point) : hit.point ;
                 if(!_ghostInstance.activeSelf) _ghostInstance.SetActive(true);
-                _isPositionValid = IsAreaClear(hit.point);
+                _isPositionValid = IsAreaClear(_ghostInstance.transform.position);
                 ApplyGhostMaterial(_isPositionValid);
             }
             else
@@ -63,6 +65,14 @@ namespace _Project.Scripts.Gameplay.Placement
            
            
             
+        }
+
+        private Vector3 SnapToGrid(Vector3 pos)
+        {
+            float snappedX = Mathf.Round(pos.x / _gridSize) * _gridSize;
+            float snappedZ = Mathf.Round(pos.z / _gridSize)* _gridSize;
+
+            return new Vector3(snappedX, pos.y, snappedZ);
         }
 
         private void SetLayerRecursively(GameObject obj, int layer)
