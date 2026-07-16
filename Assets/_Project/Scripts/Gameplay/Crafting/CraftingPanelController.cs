@@ -3,6 +3,7 @@ using _Project.Scripts.Gameplay.Player;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+
 namespace _Project.Scripts.Gameplay.Crafting
 {
     public class CraftingPanelController : MonoBehaviour
@@ -19,7 +20,7 @@ namespace _Project.Scripts.Gameplay.Crafting
         private VisualElement _craftResultSlot;
         private Label _craftResultName;
         private Button _craftButton;
-        
+        private StationKind _currentStation = StationKind.None;
         private void OnEnable()
         {
             var rootUI = _document.rootVisualElement;
@@ -51,7 +52,8 @@ namespace _Project.Scripts.Gameplay.Crafting
             _recipesScroll.Clear();
             foreach (var recipe in _recipes)
             {
-                if (recipe == null) continue;
+                if (recipe == null ) continue;
+                if (recipe.requiredStation != _currentStation) continue;
                 var card = CreateRecipeCard(recipe);
                 _recipesScroll.Add(card);
             }

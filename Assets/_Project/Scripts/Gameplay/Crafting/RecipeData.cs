@@ -7,5 +7,6 @@ namespace _Project.Scripts.Gameplay.Crafting
     {
         public ItemAmount[] inputs;
         public ItemAmount output;
+        public StationKind requiredStation;
     }
 }
