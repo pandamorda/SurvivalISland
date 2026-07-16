@@ -1,11 +1,15 @@
 using System;
 using UnityEngine;
+using _Project.Scripts.Gameplay.Items;
+using _Project.Scripts.Gameplay.Player;
 
 namespace _Project.Scripts.Gameplay.Interaction.Behaviors
 {
     [Serializable]
     public class ChestOpenBehavior : IExtractionBehavior
     {
+        [SerializeField] private ItemData reward;
+        private bool _opened;
         public void Begin(InteractableBase host)
         {
             
@@ -22,7 +26,10 @@ namespace _Project.Scripts.Gameplay.Interaction.Behaviors
 
         public void Complete(InteractableBase host)
         {
-            Debug.Log("Chest Opened");
+            if(_opened) return;
+            _opened = true;
+            if(PlayerInventory.Instance != null)
+                PlayerInventory.Instance.AddItem(reward);
         }
     }
 }
