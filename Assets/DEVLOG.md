@@ -129,3 +129,21 @@ The swimming task includes:
 * Supporting horizontal and vertical movement.
 * Correctly returning to grounded or airborne movement after leaving water.
 * Testing repeated entry and exit.
+Station-Based Crafting
+Completed
+Configured requiredStation for crafting recipes.
+Added recipe filtering by crafting station.
+Added OpenForStation() to CraftingPanelController.
+Added OpenCraftingBehavior.
+Connected the Workbench interaction to the crafting UI.
+Added a separate nine-slot grid for Workbench recipes.
+Tested hand crafting and Workbench crafting in Play Mode.
+Test Result
+Hand crafting displays only StationKind.None recipes.
+Workbench crafting displays only StationKind.Workbench recipes.
+Previously selected recipes are cleared when switching stations.
+The correct crafting grid is displayed.
+Crafting works without Console errors.
+Status
+
+Completed.

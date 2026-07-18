@@ -11,14 +11,14 @@
 
 ## Current Gameplay Systems
 
-| System             | Status | Notes   |
-|--------------------|---|---------|
-| Player movement    | Working |         |
-| Camera movement    | Working |         |
-| Sprint             | Working |         |
-| Stamina            | Working |         |
-| Jump               | Working |         |
-| Swimming           | Not working | Player falls underwater and does not stay near the water surface |
+| System             | Status            | Notes   |
+|--------------------|-------------------|---------|
+| Player movement    | Working           |         |
+| Camera movement    | Working           |         |
+| Sprint             | Working           |         |
+| Stamina            | Working           |         |
+| Jump               | Working           |         |
+| Swimming           | Not working       | Player falls underwater and does not stay near the water surface |
 | Health             | Partially working |    Health decreases correctly, but health recovery is not implemented     |
 | Hunger             | Partially working |  Hunger decreases, but hunger recovery through food is not implemented       |
 | Temperature        | Partially working |  Temperature exists, but it does not change depending on the environment       |
@@ -29,14 +29,14 @@
 | Item usage         | Partially working |  The code for applying item effects already exists, but consumable items, effect values and usage feedback still need to be configured and tested       |
 | Resource gathering | Partially working |   Chopping and digging can reward an item and remove the resource object, but tool requirements, animations, sound effects and resource feedback are missing      |
 | Chest interaction  | Partially working |   A chest can give one configured reward only once, but opening animation, visible opened state, multiple rewards and feedback are not implemented      |
-| Hand crafting      | Partially working|  Basic recipes can be displayed and crafted without a station, but ingredient validation, missing-resource feedback and UI polishing still require work       |
-| Workbench crafting | Partially working |   Workbench recipes and station types exist, but opening the crafting panel for a specific station and filtering recipes by the active workbench need to be completed      |
+| Hand crafting      | Working           |  Hand crafting displays only recipes with StationKind.None       |
+| Workbench crafting | Working           |   Interacting with the Workbench opens the crafting UI and displays only StationKind.Workbench recipes   |
 | Building placement | Partially working | A placement preview and placement checks exist, but the ghost object, collision validation, resource consumption and cancellation flow require additional testing        |
 | Day/night cycle    | Partially working | Time and light rotation are implemented, but HDRP sky, exposure transitions and complete visual changes between day and night are unfinished        |
-| Pause menu         | Missing |  The game cannot currently be paused through a dedicated menu       |
+| Pause menu         | Missing           |  The game cannot currently be paused through a dedicated menu       |
 | Game restart       | Partially working |    The game can restart or reload the scene, but the complete restart flow after death and victory has not been fully tested     |
-| Victory condition  | Missing |   The game does not yet have a final objective, rescue interaction or win screen      |
-| Weather            | Missing |   Dynamic weather is not implemented and is not required for MVP 1.0      |
+| Victory condition  | Missing           |   The game does not yet have a final objective, rescue interaction or win screen      |
+| Weather            | Missing           |   Dynamic weather is not implemented and is not required for MVP 1.0      |
 ## Audit Summary
 
 ### Fully Working Systems — 5
