@@ -79,6 +79,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 09942d2407b899c4094d788ba2dac935, type: 3}
       insertIndex: -1
       addedObject: {fileID: -408807769837764318}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 09942d2407b899c4094d788ba2dac935, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8936600376968225010}
   m_SourcePrefab: {fileID: 100100000, guid: 09942d2407b899c4094d788ba2dac935, type: 3}
 --- !u!1 &967477051389265020 stripped
 GameObject:
@@ -106,3 +109,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.8166285, y: 1.696459, z: 0.7555932}
   m_Center: {x: 0.0011534095, y: 0.8482295, z: -0.20927161}
+--- !u!114 &8936600376968225010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967477051389265020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70d339d854d5494aa29614bd15d874c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Gameplay.Interaction.InteractableBase
+  key: 0
+  behavior:
+    rid: 4120891939069624395
+  _progressBar: {fileID: 0}
+  focusColor: {r: 0, g: 1, b: 0, a: 1}
+  references:
+    version: 2
+    RefIds:
+    - rid: 4120891939069624395
+      type: {class: OpenCraftingBehavior, ns: _Project.Scripts.Gameplay.Interaction.Behaviors, asm: Assembly-CSharp}
+      data:
+        stationKind: 1

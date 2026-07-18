@@ -17,6 +17,7 @@ namespace _Project.Scripts.Gameplay.Player
         {
             Movement = GetComponent<PlayerMovement>();
             Look = GetComponent<PlayerLook>();
+            Debug.Log(Look);
             Survival = GetComponent<PlayerSurvival>();
             //Interaction = GetComponent<PlayerInteraction>();
             Inventory = GetComponent<PlayerInventory>();

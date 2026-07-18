@@ -14,21 +14,29 @@ namespace _Project.Scripts.Gameplay.Crafting
 
         private RecipeData selectedRecipeData;
         private CraftingService _service;
-
+        public static CraftingPanelController Instance { get; private set; }
+        
         private VisualElement _recipesScroll;
         private VisualElement _craftGrid;
+        VisualElement _craftGridWorkbench;
+        VisualElement _activeGrid;
         private VisualElement _craftResultSlot;
         private Label _craftResultName;
         private Button _craftButton;
         private StationKind _currentStation = StationKind.None;
         private void OnEnable()
         {
+            Instance = this;
+            
             var rootUI = _document.rootVisualElement;
             _recipesScroll = rootUI.Q<VisualElement>("recipes-scroll");
             _craftGrid = rootUI.Q<VisualElement>("craft-grid");
+            _craftGridWorkbench = rootUI.Q<VisualElement>("craft-grid-large");
             _craftResultSlot = rootUI.Q<VisualElement>("craft-result-slot");
             _craftResultName = rootUI.Q<Label>("craft-result-name");
             _craftButton = rootUI.Q<Button>("craft-button");
+            
+            _activeGrid = _craftGrid;
             _craftButton.clicked += OnCraftButtonClicked;
         }
 
@@ -38,6 +46,7 @@ namespace _Project.Scripts.Gameplay.Crafting
             _root.Inventory.OnChanged += Refresh;
             BuildRecipeList();
             Refresh();
+            
         }
 
         void OnDisable()
@@ -81,12 +90,38 @@ namespace _Project.Scripts.Gameplay.Crafting
             _craftResultName.text = output != null ? output.itemName : "?";
             _craftButton.SetEnabled(_service.CanCraft(selectedRecipeData));
         }
-        
+
+        public void OpenForStation(StationKind station)
+        {
+            _currentStation = station;
+            selectedRecipeData = null;
+            if (station == StationKind.None)
+            {
+                _activeGrid = _craftGrid;
+                _craftGridWorkbench.style.display = DisplayStyle.None;
+                
+            }
+            else
+            {
+                _activeGrid = _craftGridWorkbench;
+                _craftGrid.style.display = DisplayStyle.None;
+            }
+
+            _activeGrid.style.display = DisplayStyle.Flex;
+            
+            BuildRecipeList();
+            Refresh();
+        }
+
+        private void Close()
+        {
+            OpenForStation(StationKind.None);
+        }
         private void FillIngredientSlots(RecipeData recipe)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < _activeGrid.childCount; i++)
             {
-                var slot = _craftGrid.Q<VisualElement>($"craft-slot-{i}");
+                var slot = _activeGrid.Q<VisualElement>($"craft-slot-{i}");
                 if (slot == null) continue;
         
                 slot.Clear();
@@ -108,9 +143,9 @@ namespace _Project.Scripts.Gameplay.Crafting
         }
         private void ClearCraftSlots()
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < _activeGrid.childCount; i++)
             {
-                var slot = _craftGrid.Q<VisualElement>($"craft-slot-{i}");
+                var slot = _activeGrid.Q<VisualElement>($"craft-slot-{i}");
                 if (slot == null) continue;
                 slot.style.backgroundImage = null;
                 slot.Clear(); 

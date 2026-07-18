@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 623f0b0a9ae54969acd9c0218df2cb3b, type: 3}
+  m_Script: {fileID: 11500000, guid: 12c1b34e01a749d429218bfef9094528, type: 3}
   m_Name: Workbench
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Gameplay.Crafting.RecipeData
   inputs:
@@ -18,3 +18,4 @@ MonoBehaviour:
   output:
     item: {fileID: 11400000, guid: c19e4742372a8e44cbdb201022c66683, type: 2}
     count: 1
+  requiredStation: 0

@@ -1,3 +1,4 @@
+using _Project.Scripts.Gameplay.Crafting;
 using _Project.Scripts.Gameplay.Items;
 using _Project.Scripts.Gameplay.Placement;
 using _Project.Scripts.Gameplay.Player;
@@ -11,6 +12,10 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private PlayerRoot root;
 
     [SerializeField] private UIDocument document;
+    [SerializeField] private CraftingPanelController craftingPanel;
+    
+    public static InventoryUI Instance { get; private set; }
+    
     private VisualElement panel;
     private VisualElement itemsContainer;
     private VisualElement overlay;
@@ -22,13 +27,15 @@ public class InventoryUI : MonoBehaviour
 
     void OnEnable()
     {
+        Instance = this;
         var rootUI = document.rootVisualElement;
         
         panel = rootUI.Q<VisualElement>("inventory-panel");
         itemsContainer =rootUI.Q<VisualElement>("items-container");
         overlay = rootUI.Q<VisualElement>("inventory-overlay");
         CloseMenu();
-        
+       // root.Look.enabled = true;
+
     }
     void Start()
     {
@@ -48,13 +55,15 @@ public class InventoryUI : MonoBehaviour
             root.Inventory.OnChanged -= Refresh;
             
         }
-            
+        
     }
 
     void Disable()
     {
+        //root.Look.enabled = false;
         CloseMenu(); 
         gameObject.SetActive(false);
+        
     }
     private void Update()
     {
@@ -63,7 +72,7 @@ public class InventoryUI : MonoBehaviour
             isOpen = !isOpen;
             if (isOpen)
             {
-                OpenMenu();
+                OpenMenu(StationKind.None);
             }
             else
             {
@@ -88,16 +97,19 @@ public class InventoryUI : MonoBehaviour
         panel.style.display = DisplayStyle.None;
     }
 
-    void OpenMenu()
+    public void OpenMenu(StationKind station)
     {
         if(panel == null) return;
+        isOpen = true;
         
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         
         overlay.style.display = DisplayStyle.Flex;
         panel.style.display = DisplayStyle.Flex;
+        
         Refresh();
+        if (craftingPanel != null) craftingPanel.OpenForStation(station);
         
     }
 

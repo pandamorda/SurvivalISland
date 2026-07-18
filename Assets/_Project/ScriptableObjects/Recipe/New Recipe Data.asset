@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12c1b34e01a749d429218bfef9094528, type: 3}
-  m_Name: Rope
+  m_Name: New Recipe Data
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Gameplay.Crafting.RecipeData
   inputs:
   - item: {fileID: 11400000, guid: eb124d724607bec43824af30c654298a, type: 2}
-    count: 3
-  output:
-    item: {fileID: 11400000, guid: c059827e9cb348f48978263b8f3a5b46, type: 2}
     count: 1
-  requiredStation: 0
+  output:
+    item: {fileID: 11400000, guid: aab9c68f4a520a24e8e04cd7bee2864a, type: 2}
+    count: 0
+  requiredStation: 1

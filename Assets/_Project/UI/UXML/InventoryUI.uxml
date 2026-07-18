@@ -18,6 +18,17 @@
                                 <ui:VisualElement name="craft-slot-2" class="craft-slot"/>
                                 <ui:VisualElement name="craft-slot-3" class="craft-slot"/>
                             </ui:VisualElement>
+                            <ui:VisualElement name="craft-grid-large" class="craft-grid-large">
+                                <ui:VisualElement name="craft-slot-0" class="craft-slot"/>
+                                <ui:VisualElement name="craft-slot-1" class="craft-slot"/>
+                                <ui:VisualElement name="craft-slot-2" class="craft-slot"/>
+                                <ui:VisualElement name="craft-slot-3" class="craft-slot"/>
+                                <ui:VisualElement name="craft-slot-4" class="craft-slot"/>
+                                <ui:VisualElement name="craft-slot-5" class="craft-slot"/>
+                                <ui:VisualElement name="craft-slot-6" class="craft-slot"/>
+                                <ui:VisualElement name="craft-slot-7" class="craft-slot"/>
+                                <ui:VisualElement name="craft-slot-8" class="craft-slot"/>
+                            </ui:VisualElement>
                             <ui:Button name="craft-button" text="Craft" class="craft-button"/>
                         </ui:VisualElement>
                         <ui:VisualElement class="craft-result-block">
