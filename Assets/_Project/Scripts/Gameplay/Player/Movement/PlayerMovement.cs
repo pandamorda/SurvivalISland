@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using _Project.Scripts.Gameplay.Player.Movement;
 namespace _Project.Scripts.Gameplay.Player
@@ -32,8 +33,14 @@ namespace _Project.Scripts.Gameplay.Player
             
             currentState = groundedState;
             currentState.Enter();
+            GameplayState.OnGameplayEnabledChanged += OnGameplayStateChanged;
         }
+        
 
+        private void OnDestroy()
+        {
+            GameplayState.OnGameplayEnabledChanged -= OnGameplayStateChanged;
+        }
 
         private void Update()
         {
@@ -69,7 +76,10 @@ namespace _Project.Scripts.Gameplay.Player
         
 
 
-
+        private void OnGameplayStateChanged(bool value)
+        {
+            enabled = value;
+        }
      
 
         

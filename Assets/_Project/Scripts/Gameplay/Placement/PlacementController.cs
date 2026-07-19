@@ -1,3 +1,4 @@
+using System;
 using _Project.Scripts.Gameplay.Items;
 using _Project.Scripts.Gameplay.Player;
 using UnityEngine;
@@ -29,6 +30,7 @@ namespace _Project.Scripts.Gameplay.Placement
         public void Awake()
         {
             Instance = this;
+            GameplayState.OnGameplayEnabledChanged += OnGameplayStateChanged;
         }
 
         void Update()
@@ -66,7 +68,14 @@ namespace _Project.Scripts.Gameplay.Placement
            
             
         }
-
+        private void OnGameplayStateChanged(bool value)
+        {
+            if (!value && IsPlacing)
+            {
+                Cancel();
+            }
+            enabled = value;
+        }
         private Vector3 SnapToGrid(Vector3 pos)
         {
             float snappedX = Mathf.Round(pos.x / _gridSize) * _gridSize;
@@ -148,6 +157,11 @@ namespace _Project.Scripts.Gameplay.Placement
             }
 
             _currentItem = null;
+        }
+
+        private void OnDestroy()
+        {
+            GameplayState.OnGameplayEnabledChanged -= OnGameplayStateChanged;
         }
     }
 }

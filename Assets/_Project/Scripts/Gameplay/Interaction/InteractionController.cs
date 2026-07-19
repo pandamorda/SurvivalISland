@@ -1,3 +1,4 @@
+using System;
 using _Project.Scripts.Gameplay.Player;
 using _Project.Scripts.Gameplay.Player.Movement;
 using UnityEngine;
@@ -11,7 +12,12 @@ namespace _Project.Scripts.Gameplay.Interaction.Player
         private ITargetDetector _detector;
         private IInputService _input;
         private IInteractable _current;
-        
+
+        private void Awake()
+        {
+            GameplayState.OnGameplayEnabledChanged += OnGameplayStateChanged;
+        }
+
         void Start()
         {
             _detector = detectorComponent as ITargetDetector;
@@ -52,6 +58,21 @@ namespace _Project.Scripts.Gameplay.Interaction.Player
             if (_input.IsReleased(key)) _current.StopInteract();
 
             _current.Tick(Time.deltaTime);
+        }
+        
+        private void OnGameplayStateChanged(bool value)
+        {
+            if (!value && _current != null)
+            {
+                _current.Unfocus();
+                _current = null;
+            }
+            enabled = value;
+        }
+
+        private void OnDestroy()
+        {
+            GameplayState.OnGameplayEnabledChanged -= OnGameplayStateChanged;
         }
     }
 }

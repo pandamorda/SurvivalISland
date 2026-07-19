@@ -34,7 +34,6 @@ public class InventoryUI : MonoBehaviour
         itemsContainer =rootUI.Q<VisualElement>("items-container");
         overlay = rootUI.Q<VisualElement>("inventory-overlay");
         CloseMenu();
-       // root.Look.enabled = true;
 
     }
     void Start()
@@ -46,6 +45,8 @@ public class InventoryUI : MonoBehaviour
     
         if (root.Inventory != null)
             root.Inventory.OnChanged += Refresh;
+        
+        GameplayState.SetGameplayEnabled(true);
     }
     private void OnDisable()
     {
@@ -60,8 +61,8 @@ public class InventoryUI : MonoBehaviour
 
     void Disable()
     {
-        //root.Look.enabled = false;
         CloseMenu(); 
+        GameplayState.SetGameplayEnabled(false);
         gameObject.SetActive(false);
         
     }
@@ -89,6 +90,7 @@ public class InventoryUI : MonoBehaviour
         Cursor.visible = false;
         
         HidePanels();
+        GameplayState.SetGameplayEnabled(true);
     }
     void HidePanels()
     {
@@ -110,6 +112,7 @@ public class InventoryUI : MonoBehaviour
         
         Refresh();
         if (craftingPanel != null) craftingPanel.OpenForStation(station);
+        GameplayState.SetGameplayEnabled(false);
         
     }
 
