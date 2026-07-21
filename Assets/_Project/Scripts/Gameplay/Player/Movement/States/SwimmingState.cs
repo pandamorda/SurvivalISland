@@ -41,17 +41,17 @@ namespace _Project.Scripts.Gameplay.Player.Movement
             if (input.JumpHeld) vertInput = 1f;
             if (input.DiveHeld) vertInput = -1f;
 
-            if (Mathf.Abs(vertInput) > 0.01f)
+            if (Mathf.Abs(vertInput) > 0.01f )
             {
 
                 yVelocity += vertInput * config.DiveSpeed * Time.deltaTime * config.DiveAccelerationMultiplier;
-            }
-            else
+                
+            }else if (depthOffset < 0)
             {
-
                 float buoyancyForce = depthOffset * config.SwimBuoyancySmooth;
                 yVelocity += buoyancyForce * Time.deltaTime;
             }
+
 
 
             yVelocity -= yVelocity * config.DiveDamping * Time.deltaTime;
@@ -62,6 +62,7 @@ namespace _Project.Scripts.Gameplay.Player.Movement
             finalVelocity.y = yVelocity;
 
             ApplyMove(finalVelocity);
+            Debug.Log($"vertInput={vertInput}, yVelocity={yVelocity}, depthOffset={depthOffset}");
         }
     }
 }

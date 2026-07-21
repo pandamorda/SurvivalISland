@@ -8,7 +8,7 @@ namespace _Project.Scripts.Gameplay.Player
 public class WaterVolume : MonoBehaviour
 {
     
-    public float SurfaceY => transform.position.y + GetComponent<Collider>().bounds.extents.y;
+    public float SurfaceY => GetComponent<Collider>().bounds.max.y;
 
     private void OnTriggerEnter(Collider other)
     {
