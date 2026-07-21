@@ -31,8 +31,10 @@ public class WaterVolume : MonoBehaviour
    
     private void OnDrawGizmos()
     {
+        var col = GetComponent<Collider>();
         Gizmos.color = new Color(0f, 0.5f, 1f, 0.25f);
-        Gizmos.DrawCube(transform.position, GetComponent<Collider>().bounds.size);
+        Gizmos.DrawCube(col.bounds.center, col.bounds.size);
+    
         Gizmos.color = new Color(0f, 0.8f, 1f, 0.8f);
         Vector3 surfaceLine = new Vector3(transform.position.x, SurfaceY, transform.position.z);
         Gizmos.DrawLine(surfaceLine - Vector3.right * 2f, surfaceLine + Vector3.right * 2f);
