@@ -16,6 +16,7 @@ namespace _Project.Scripts.Gameplay.Survival
 
         [SerializeField] private TimeSystem timeSystem;
         [SerializeField] private float damagePerSecond;
+        [SerializeField] private float hungryPerSecond;
         [SerializeField] private float coldDamagePerSecond;
         [SerializeField] private float minComfortTemperature = 15f;
         [SerializeField] private float maxComfortTemperature = 35f;
@@ -26,6 +27,7 @@ namespace _Project.Scripts.Gameplay.Survival
         public float HungerNormalized() => _hunger.Normalized();
         public float HealthNormalized() => _health.Normalized();
         public float TemperatureNormalized() => _temperature.Normalized();
+        public float ThirstyNormalized() => _thirst.Normalized();
 
         private void Awake()
         {
@@ -73,6 +75,7 @@ namespace _Project.Scripts.Gameplay.Survival
         
         }
 
+        
         public void HandleConsume()
         {
             float dt = Time.deltaTime;
@@ -81,7 +84,7 @@ namespace _Project.Scripts.Gameplay.Survival
                                            
             if (_hunger.Current <= 0f)
             {
-                TakeDamage(damagePerSecond * dt);
+                TakeDamage(hungryPerSecond * dt);
             }
 
             if (_thirst.Current <= 0f)
@@ -89,12 +92,21 @@ namespace _Project.Scripts.Gameplay.Survival
                 TakeDamage(damagePerSecond * dt);
             }
         }
-         
+        public void HealInstant(float amount)
+        {
+            _health.Increase(amount);
+        }
+
+        public void AddHungerInstant(float amount)
+        {
+            _hunger.Increase(amount);
+        }
         private void Update()
         {
         
             HandleTemperature();
             HandleConsume();
+            
 
         }
     

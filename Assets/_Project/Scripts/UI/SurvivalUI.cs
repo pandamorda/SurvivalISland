@@ -13,6 +13,7 @@ namespace _Project.Scripts.UI
         private UIDocument _document; 
         private VisualElement _staminaFill; 
         private VisualElement _hungerFill;
+        private VisualElement _thirstyFill;
         private VisualElement _healthFill;
         private VisualElement _temperatureFill;
     
@@ -34,6 +35,7 @@ namespace _Project.Scripts.UI
             _hungerFill = root.Q<VisualElement>("hunger-fill"); 
             _healthFill = root.Q<VisualElement>("health-fill");
             _temperatureFill = root.Q<VisualElement>("temperature-fill");
+            _thirstyFill = root.Q<VisualElement>("thirsty-fill");
 
             _dayCount = root.Q<Label>("day-count-label");
             _time = root.Q<Label>("time-label");
@@ -57,11 +59,13 @@ namespace _Project.Scripts.UI
             float hungerValue = playerSurvival.HungerNormalized() * 100f;
             float healthValue = playerSurvival.HealthNormalized() * 100f;
             float tempNormalized = playerSurvival.TemperatureNormalized();
+            float thirstyValue = playerSurvival.ThirstyNormalized() * 100f;
         
             _temperatureFill.style.backgroundColor = GetTemperatureColor(tempNormalized);
             _staminaFill.style.width = Length.Percent(staminaValue); 
             _hungerFill.style.width = Length.Percent(hungerValue);
             _healthFill.style.width = Length.Percent(healthValue);
+            _thirstyFill.style.width = Length.Percent(thirstyValue);
 
             _dayCount.text = "Day " + timeSystem.DayCount.ToString();
             _time.text = $"{timeSystem.Hours:00}:{timeSystem.Minutes:00}";

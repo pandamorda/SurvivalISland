@@ -6,7 +6,7 @@
             <ui:VisualElement name="stamina-wrapper" class="bar-wrapper">
                 <ui:Label text="Stamina" class="bar-label"/>
                 <ui:VisualElement name="stamina-background" class="bar-background">
-                    <ui:VisualElement name="stamina-fill" class="bar-fill stamina-fill"/>
+                    <ui:VisualElement name="stamina-fill" class="bar-fill stamina-fill" style="background-color: rgb(70, 255, 118);"/>
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="hunger-wrapper" class="bar-wrapper">
@@ -17,8 +17,14 @@
             </ui:VisualElement>
             <ui:VisualElement name="health-wrapper" class="bar-wrapper">
                 <ui:Label text="Health" class="bar-label"/>
-                <ui:VisualElement name="health-background" class="bar-background">
+                <ui:VisualElement name="health-background" class="bar-background" style="background-color: rgba(0, 0, 0, 0.6);">
                     <ui:VisualElement name="health-fill" class="bar-fill health-fill"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="thirsty-wrapper" class="bar-wrapper" style="background-color: rgba(0, 0, 0, 0);">
+                <ui:Label text="Thirsty" class="bar-label"/>
+                <ui:VisualElement name="thirsty-background" class="bar-background" style="background-color: rgba(0, 0, 0, 0.6);">
+                    <ui:VisualElement name="thirsty-fill" class="bar-fill thirsty-fill" style="background-color: rgb(113, 175, 243); opacity: 1;"/>
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="temperature-wrapper" class="bar-wrapper">

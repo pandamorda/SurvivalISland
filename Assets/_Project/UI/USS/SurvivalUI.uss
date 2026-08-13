@@ -56,7 +56,7 @@
 }
 
 .stamina-fill {
-    background-color: rgb(70, 160, 255);
+    background-color: rgb(70, 255, 129);
 }
 
 .hunger-fill {
@@ -68,7 +68,9 @@
 .temperature-fill {
     background-color: rgb(255, 255,255);
 }
-
+.thirsty-fill {
+    background-color: rgb(70, 160, 255);
+}
 .world-panel {
     position: absolute;
     top: 20px;
